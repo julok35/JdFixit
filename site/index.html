@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JdFixit — La pièce qui n'existe plus, je la redessine et je l'imprime</title>
+<meta name="description" content="JdFixit — réparation par conception et impression 3D. Croquis, CAO, impression PETG sur BambuLab X1C.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231b1c1e'/%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-size='19' font-weight='900' fill='%23e2562b' text-anchor='middle'%3EJd%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- header + progress -->
+  <header class="header">
+    <div class="header-row">
+      <span class="logo-small">JdFixit</span>
+      <span class="counter" id="counter">01 / 06</span>
+    </div>
+    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+  </header>
+
+  <!-- horizontal track -->
+  <main class="track" id="track">
+
+    <!-- panel 0 · hero -->
+    <section class="panel panel-hero">
+      <div class="kicker"><span class="dot"></span>ATELIER · IMPRESSION 3D · PETG</div>
+      <div class="logo-hero">
+        <span class="logo-hero-shadow">JdFixit</span>
+        <span class="logo-hero-layers" aria-hidden="true">JdFixit</span>
+      </div>
+      <p class="hero-promise">La pièce qui n'existe plus, <span class="accent">je la redessine et je l'imprime.</span></p>
+      <p class="hero-note">Si vous lisez ça, c'est qu'on vous a passé l'adresse. Bienvenue dans l'atelier. <span class="accent">— JdF</span></p>
+      <div class="hero-hint"><span>GLISSEZ POUR SUIVRE LE PROCÉDÉ</span><span class="hint-arrow">→</span></div>
+    </section>
+
+    <!-- panel 1 · étape 1 -->
+    <section class="panel panel-step">
+      <span class="step-watermark" aria-hidden="true">1</span>
+      <div class="step-label">ÉTAPE 1 / 3 · CROQUIS</div>
+      <div class="step-media"><img src="assets/etape-1-croquis.jpg" alt="Relevé de côtes main levée — croquis coté au stylo"></div>
+      <h3 class="step-title">Le relevé main levée</h3>
+      <p class="step-text">Mesures, contraintes, efforts subis. On comprend pourquoi la pièce a cédé — et comment l'en empêcher.</p>
+    </section>
+
+    <!-- panel 2 · étape 2 -->
+    <section class="panel panel-step">
+      <span class="step-watermark" aria-hidden="true">2</span>
+      <div class="step-label">ÉTAPE 2 / 3 · CAO ◆</div>
+      <div class="step-media"><img src="assets/etape-2-cao.png" alt="Mise en plan CAO — cotes, vues et perspective isométrique"></div>
+      <h3 class="step-title">La modélisation</h3>
+      <p class="step-text">Mise en plan, tolérances, vérification RDM. Tout est calculé et validé à l'écran avant de chauffer la buse.</p>
+    </section>
+
+    <!-- panel 3 · étape 3 -->
+    <section class="panel panel-step panel-step-print">
+      <span class="step-watermark step-watermark-orange" aria-hidden="true">3</span>
+      <div class="step-label step-label-orange">ÉTAPE 3 / 3 · PRINT</div>
+      <div class="step-media step-media-orange"><img src="assets/etape-3-print.png" alt="Pièce imprimée en PETG, couches d'impression visibles"></div>
+      <h3 class="step-title">L'impression PETG</h3>
+      <p class="step-text">PETG sur BambuLab X1C. Du prototype testé à la pièce finale — ajustée, résistante. Fichier remis si vous voulez.</p>
+    </section>
+
+    <!-- panel 4 · forfaits -->
+    <section class="panel panel-forfaits">
+      <div class="forfaits-title">— Forfaits indicatifs</div>
+      <div class="forfaits-sub">Selon la complexité. Couvre filament, visserie, électricité, amortissement.</div>
+
+      <div class="forfait" data-forfait="0">
+        <div class="forfait-head"><span class="forfait-niveau">NIVEAU 1</span><span class="forfait-prix">10<small> €</small></span></div>
+        <div class="forfait-nom">Pièce simple</div>
+        <p class="forfait-desc">Modélisation directe, peu de contraintes. Une impression, c'est réglé.</p>
+        <div class="forfait-cta">Choisir →</div>
+      </div>
+
+      <div class="forfait forfait-dark" data-forfait="1">
+        <span class="forfait-badge">LE PLUS COURANT</span>
+        <div class="forfait-head"><span class="forfait-niveau">NIVEAU 2</span><span class="forfait-prix forfait-prix-orange">20<small> €</small></span></div>
+        <div class="forfait-nom">Pièce technique</div>
+        <p class="forfait-desc">Plus fine, plusieurs essais d'impression pour le bon réglage.</p>
+        <div class="forfait-cta forfait-cta-light">Choisir →</div>
+      </div>
+
+      <div class="forfait" data-forfait="2">
+        <div class="forfait-head"><span class="forfait-niveau">NIVEAU 3</span><span class="forfait-prix"><small class="des">dès </small>30<small> €</small></span></div>
+        <div class="forfait-nom">Sur étude</div>
+        <p class="forfait-desc">Contraintes fortes, tolérances serrées. Devis à confirmer ensemble.</p>
+        <div class="forfait-cta">Choisir →</div>
+      </div>
+    </section>
+
+    <!-- panel 5 · contact -->
+    <section class="panel panel-contact">
+      <div class="contact-title">On regarde ça ensemble ?</div>
+      <p class="contact-text">Décrivez la pièce, joignez une photo. Réponse sous 48 h, sans engagement — on regarde si c'est faisable.</p>
+      <div class="contact-forfait">FORFAIT PRESSENTI · <span id="selLine">à définir ensemble</span></div>
+      <button class="cta" id="openSheet" type="button">Envoyer ma demande</button>
+      <p class="contact-disclaimer">Pas de pièce de sécurité critique (freins, gaz, levage…).</p>
+    </section>
+
+  </main>
+
+  <!-- swipe affordances -->
+  <button class="nav-prev" id="navPrev" type="button" aria-label="Écran précédent" hidden>‹</button>
+  <div class="nav-next" id="navNext" role="button" tabindex="0" aria-label="Écran suivant">
+    <div class="nav-next-btn">›</div>
+    <span class="nav-next-label">GLISSER</span>
+  </div>
+
+  <!-- bottom sheet -->
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-label="Décrivez votre pièce">
+      <div class="sheet-handle"></div>
+
+      <form id="requestForm" class="sheet-form">
+        <h2 class="sheet-title">Décrivez votre pièce</h2>
+        <label class="field">NOM<input type="text" name="nom" placeholder="Votre nom" autocomplete="name"></label>
+        <label class="field">CONTACT<input type="text" name="contact" placeholder="Email ou téléphone" autocomplete="email"></label>
+        <label class="field">OBJET &amp; CONTEXTE<textarea name="contexte" rows="3" placeholder="Ce qui a cassé, l'usage, mesures si vous les avez…"></textarea></label>
+        <p class="sheet-attach-note"><span>📎</span> Les photos &amp; mesures s'ajoutent directement dans la conversation (WhatsApp ou e-mail).</p>
+        <div class="sheet-actions">
+          <button type="button" class="send-btn send-whatsapp" id="sendWhatsApp">Envoyer par WhatsApp</button>
+          <button type="button" class="send-btn send-email" id="sendEmail">Envoyer par e-mail</button>
+        </div>
+        <p class="sheet-config-warning" id="configWarning" hidden>Contact non configuré — renseignez <code>contact.config.js</code> (voir README).</p>
+      </form>
+
+      <div id="sentView" class="sheet-sent" hidden>
+        <div class="sent-check">✓</div>
+        <h2 class="sheet-title">C'est envoyé, merci !</h2>
+        <p class="sent-text">Réponse sous 48 h. En attendant : gardez le morceau cassé, il dit tout de la rupture.</p>
+        <button type="button" class="sent-close" id="closeSent">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="contact.config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

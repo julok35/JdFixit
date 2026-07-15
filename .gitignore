@@ -1,3 +1,9 @@
+# Coordonnées privées (téléphone / e-mail) — jamais commitées.
+site/contact.config.js
+
+.vercel/
+node_modules/
+.DS_Store
 dist/
 .env
 .env.*

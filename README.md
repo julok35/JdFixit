@@ -1,6 +1,12 @@
 # JdFixit
 
-Site vitrine de JdFixit — réparations et petits travaux à domicile.
+Site vitrine de JdFixit — atelier d'impression 3D : « La pièce qui n'existe
+plus, je la redessine et je l'imprime. » Relevé coté à main levée,
+modélisation CAO, impression PETG (BambuLab X1C), forfaits indicatifs.
+
+Le design reprend le prototype établi dans Claude Design (esthétique papier
+millimétré, typographies Archivo / Caveat / Space Mono) : grille plein écran
+sur desktop, navigation par écrans à glisser horizontalement sur mobile.
 
 Site statique (HTML/CSS) avec un mini-build (`build.mjs`) qui injecte les
 coordonnées de contact depuis les variables d'environnement au moment du

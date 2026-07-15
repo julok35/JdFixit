@@ -91,20 +91,23 @@
       <div class="container contact">
         <h2>Contact</h2>
         <p class="section-intro">Décrivez votre besoin, nous revenons vers vous sous 24&nbsp;h.</p>
-        <div class="contact-grid">
-          <a class="contact-item" href="mailto:%%JDFIXIT_EMAIL%%">
+        <div class="contact-grid" id="contact-cards" data-e="%%JDFIXIT_EMAIL_ENC%%" data-w="%%JDFIXIT_WA_ENC%%">
+          <div class="contact-item">
             <span class="contact-label">Email</span>
-            <span class="contact-value">%%JDFIXIT_EMAIL%%</span>
-          </a>
-          <a class="contact-item" href="%%JDFIXIT_WHATSAPP_LINK%%" target="_blank" rel="noopener">
+            <button class="reveal-btn" id="reveal-email" type="button">Afficher l'email</button>
+          </div>
+          <div class="contact-item">
             <span class="contact-label">WhatsApp</span>
-            <span class="contact-value">%%JDFIXIT_WHATSAPP%%</span>
-          </a>
+            <button class="reveal-btn" id="open-whatsapp" type="button">Ouvrir WhatsApp</button>
+          </div>
           <div class="contact-item">
             <span class="contact-label">Zone d'intervention</span>
             <span class="contact-value">%%JDFIXIT_CITY%%</span>
           </div>
         </div>
+        <noscript>
+          <p class="section-intro">Activez JavaScript pour afficher les coordonnées de contact.</p>
+        </noscript>
       </div>
     </section>
   </main>
@@ -116,5 +119,26 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var grid = document.getElementById('contact-cards');
+      // Les coordonnées sont encodées (base64 inversé) pour ne jamais
+      // apparaître en clair dans le HTML servi aux scrapers.
+      var dec = function (s) { return atob(s).split('').reverse().join(''); };
+
+      document.getElementById('reveal-email').addEventListener('click', function () {
+        var email = dec(grid.dataset.e);
+        var a = document.createElement('a');
+        a.href = 'mailto:' + email;
+        a.textContent = email;
+        a.className = 'contact-value';
+        this.replaceWith(a);
+      });
+
+      document.getElementById('open-whatsapp').addEventListener('click', function () {
+        window.open('https://wa.me/' + dec(grid.dataset.w), '_blank', 'noopener');
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -25,11 +25,14 @@ const waNumber = digits.startsWith('0') ? '33' + digits.slice(1) : digits;
 const escapeHtml = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+// Anti-scraping : les coordonnées sont encodées (chaîne inversée puis
+// base64) et décodées uniquement dans le navigateur, au clic.
+const enc = (s) => Buffer.from([...s].reverse().join(''), 'utf8').toString('base64');
+
 let html = await readFile('index.html', 'utf8');
 html = html
-  .replaceAll('%%JDFIXIT_EMAIL%%', escapeHtml(values.JDFIXIT_EMAIL))
-  .replaceAll('%%JDFIXIT_WHATSAPP%%', escapeHtml(values.JDFIXIT_WHATSAPP))
-  .replaceAll('%%JDFIXIT_WHATSAPP_LINK%%', `https://wa.me/${waNumber}`)
+  .replaceAll('%%JDFIXIT_EMAIL_ENC%%', enc(values.JDFIXIT_EMAIL))
+  .replaceAll('%%JDFIXIT_WA_ENC%%', enc(waNumber))
   .replaceAll('%%JDFIXIT_CITY%%', escapeHtml(values.JDFIXIT_CITY));
 
 await mkdir('dist', { recursive: true });

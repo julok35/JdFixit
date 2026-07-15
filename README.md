@@ -6,6 +6,13 @@ Site statique (HTML/CSS) avec un mini-build (`build.mjs`) qui injecte les
 coordonnées de contact depuis les variables d'environnement au moment du
 déploiement — les coordonnées ne sont donc pas stockées dans le dépôt.
 
+Protection anti-scraping : l'email et le numéro WhatsApp ne figurent jamais
+en clair dans le HTML servi. Ils sont encodés au build (chaîne inversée +
+base64) et décodés dans le navigateur uniquement au clic du visiteur
+(« Afficher l'email » / « Ouvrir WhatsApp », qui n'affiche jamais le numéro).
+Le HTML brut récupéré par les robots ne contient donc aucune coordonnée
+exploitable par regex.
+
 ## Variables d'environnement (Vercel)
 
 | Variable | Contenu |

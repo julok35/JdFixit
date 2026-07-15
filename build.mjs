@@ -1,6 +1,6 @@
 // Injecte les coordonnées (variables d'environnement Vercel) dans le HTML
 // et assemble le site final dans dist/.
-import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 
 const FALLBACKS = {
   JDFIXIT_EMAIL: 'contact@jdfixit.example',
@@ -39,5 +39,6 @@ await mkdir('dist', { recursive: true });
 await writeFile('dist/index.html', html);
 await copyFile('styles.css', 'dist/styles.css');
 await copyFile('favicon.svg', 'dist/favicon.svg');
+await cp('assets', 'dist/assets', { recursive: true });
 
 console.log('✔ Site généré dans dist/');

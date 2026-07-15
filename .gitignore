@@ -4,3 +4,7 @@ site/contact.config.js
 .vercel/
 node_modules/
 .DS_Store
+dist/
+.env
+.env.*
+.vercel

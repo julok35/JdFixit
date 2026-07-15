@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JdFixit — Petits travaux, réparations et bricolage à domicile. Intervention rapide, travail soigné, devis gratuit.">
+  <title>JdFixit — Réparations &amp; petits travaux à domicile</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="container nav">
+      <a href="#" class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+        <span>Jd<strong>Fixit</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#contact" class="btn btn-small">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1>Réparations &amp; petits travaux,<br>sans prise de tête.</h1>
+        <p class="lead">
+          JdFixit intervient chez vous pour tous vos petits travaux du quotidien :
+          montage, fixation, réparation, entretien. Un travail soigné, au juste prix.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Demander un devis gratuit</a>
+          <a href="#services" class="btn btn-ghost">Voir les services</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2>Nos services</h2>
+        <p class="section-intro">Une seule adresse pour tout ce qui doit être monté, fixé ou réparé.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">🛠️</div>
+            <h3>Montage &amp; installation</h3>
+            <p>Montage de meubles, pose d'étagères, tringles, luminaires, tableaux et supports TV.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🚰</div>
+            <h3>Petite plomberie</h3>
+            <p>Remplacement de robinets, joints, flexibles, débouchage simple et petites fuites.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">💡</div>
+            <h3>Petite électricité</h3>
+            <p>Remplacement de prises, interrupteurs, luminaires et petits dépannages électriques.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🚪</div>
+            <h3>Réparations diverses</h3>
+            <p>Portes qui frottent, poignées, serrures, volets, moustiquaires et petits travaux de finition.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="apropos" class="section section-alt">
+      <div class="container about">
+        <h2>À propos de JdFixit</h2>
+        <p>
+          JdFixit, c'est un artisan de confiance pour tous les petits travaux que l'on
+          remet toujours à plus tard. Ponctualité, transparence sur les tarifs et
+          travail propre : voilà l'engagement.
+        </p>
+        <ul class="checklist">
+          <li>Devis gratuit et sans engagement</li>
+          <li>Intervention rapide, créneaux en soirée et le week-end</li>
+          <li>Tarifs clairs annoncés avant chaque intervention</li>
+          <li>Chantier laissé propre, garantie sur le travail effectué</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact">
+        <h2>Contact</h2>
+        <p class="section-intro">Décrivez votre besoin, nous revenons vers vous sous 24&nbsp;h.</p>
+        <div class="contact-grid" id="contact-cards" data-e="%%JDFIXIT_EMAIL_ENC%%" data-w="%%JDFIXIT_WA_ENC%%">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <button class="reveal-btn" id="reveal-email" type="button">Afficher l'email</button>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">WhatsApp</span>
+            <button class="reveal-btn" id="open-whatsapp" type="button">Ouvrir WhatsApp</button>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Zone d'intervention</span>
+            <span class="contact-value">%%JDFIXIT_CITY%%</span>
+          </div>
+        </div>
+        <noscript>
+          <p class="section-intro">Activez JavaScript pour afficher les coordonnées de contact.</p>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 JdFixit — Tous droits réservés</span>
+      <a href="#">Retour en haut ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var grid = document.getElementById('contact-cards');
+      // Les coordonnées sont encodées (base64 inversé) pour ne jamais
+      // apparaître en clair dans le HTML servi aux scrapers.
+      var dec = function (s) { return atob(s).split('').reverse().join(''); };
+
+      document.getElementById('reveal-email').addEventListener('click', function () {
+        var email = dec(grid.dataset.e);
+        var a = document.createElement('a');
+        a.href = 'mailto:' + email;
+        a.textContent = email;
+        a.className = 'contact-value';
+        this.replaceWith(a);
+      });
+
+      document.getElementById('open-whatsapp').addEventListener('click', function () {
+        window.open('https://wa.me/' + dec(grid.dataset.w), '_blank', 'noopener');
+      });
+    })();
+  </script>
+</body>
+</html>

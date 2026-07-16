@@ -1,5 +1,6 @@
-// Injecte les coordonnées (variables d'environnement Vercel) dans le HTML
-// et assemble le site final dans dist/.
+// Injecte les coordonnées (variables d'environnement Vercel) et la
+// navigation commune dans chaque page HTML, puis assemble le site
+// final dans dist/.
 import { cp, mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
 
 const FALLBACKS = {
@@ -29,16 +30,41 @@ const escapeHtml = (s) =>
 // base64) et décodées uniquement dans le navigateur, au clic.
 const enc = (s) => Buffer.from([...s].reverse().join(''), 'utf8').toString('base64');
 
-let html = await readFile('index.html', 'utf8');
-html = html
-  .replaceAll('%%JDFIXIT_EMAIL_ENC%%', enc(values.JDFIXIT_EMAIL))
-  .replaceAll('%%JDFIXIT_WA_ENC%%', enc(waNumber))
-  .replaceAll('%%JDFIXIT_CITY%%', escapeHtml(values.JDFIXIT_CITY));
+// Pages du site : chacune contient un placeholder %%JDFIXIT_NAV%% où la
+// navigation commune est injectée, avec le lien de la page courante actif.
+const PAGES = ['index.html', 'galerie.html', 'materiel.html', 'devis.html', 'tarifs.html'];
+
+const NAV_LINKS = [
+  ['index.html', 'Accueil'],
+  ['galerie.html', 'Galerie'],
+  ['materiel.html', 'Matériel'],
+  ['tarifs.html', 'Tarifs'],
+  ['devis.html', 'Devis'],
+];
+
+const nav = (current) =>
+  '<nav class="site-nav mono" aria-label="Navigation principale">' +
+  NAV_LINKS.map(([href, label]) =>
+    href === current
+      ? `<a href="${href}" class="is-active" aria-current="page">${label}</a>`
+      : `<a href="${href}">${label}</a>`
+  ).join('') +
+  '</nav>';
 
 await mkdir('dist', { recursive: true });
-await writeFile('dist/index.html', html);
+
+for (const page of PAGES) {
+  let html = await readFile(page, 'utf8');
+  html = html
+    .replaceAll('%%JDFIXIT_NAV%%', nav(page))
+    .replaceAll('%%JDFIXIT_EMAIL_ENC%%', enc(values.JDFIXIT_EMAIL))
+    .replaceAll('%%JDFIXIT_WA_ENC%%', enc(waNumber))
+    .replaceAll('%%JDFIXIT_CITY%%', escapeHtml(values.JDFIXIT_CITY));
+  await writeFile(`dist/${page}`, html);
+}
+
 await copyFile('styles.css', 'dist/styles.css');
 await copyFile('favicon.svg', 'dist/favicon.svg');
 await cp('assets', 'dist/assets', { recursive: true });
 
-console.log('✔ Site généré dans dist/');
+console.log(`✔ Site généré dans dist/ (${PAGES.length} pages)`);

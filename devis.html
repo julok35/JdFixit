@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Décrivez votre besoin à JdFixit — réparation, création de pièce sur mesure ou gravure laser. Quelques champs suffisent pour qualifier la demande et obtenir une réponse rapide.">
+  <title>Devis — JdFixit · Décrivez votre besoin en 2 minutes</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="inner">
+
+  %%JDFIXIT_NAV%%
+
+  <main class="page">
+
+    <header class="page-head">
+      <a class="logo logo-header page-logo" href="index.html" aria-label="Retour à l'accueil"><span class="logo-base">JdFixit</span><span class="logo-top" aria-hidden="true">JdFixit</span></a>
+      <h1 class="page-title hand">— Décrivez votre besoin</h1>
+      <p class="page-sub mono">2 MINUTES · RÉPONSE SOUS 48 H · SANS ENGAGEMENT</p>
+    </header>
+
+    <p class="page-intro">Plus la demande est précise, plus la réponse est rapide — ces quelques champs évitent les allers-retours. À l'envoi, un message tout prêt s'ouvre dans WhatsApp ou dans votre messagerie&nbsp;: relisez, ajoutez vos photos, envoyez.</p>
+
+    <form class="devis-form" id="devis-form" data-e="%%JDFIXIT_EMAIL_ENC%%" data-w="%%JDFIXIT_WA_ENC%%">
+
+      <div class="field">
+        <span class="field-label mono">Type de demande</span>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="type" value="Réparer une pièce cassée" checked> Réparer une pièce cassée</label>
+          <label class="choice"><input type="radio" name="type" value="Créer une pièce sur mesure"> Créer une pièce sur mesure</label>
+          <label class="choice"><input type="radio" name="type" value="Gravure laser"> Gravure laser</label>
+          <label class="choice"><input type="radio" name="type" value="Autre"> Autre</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label mono" for="f-description">L'objet et le besoin <span class="req">*</span></label>
+        <textarea id="f-description" name="description" required placeholder="Ex. : poignée de four cassée à la base, l'ergot de fixation a cédé. La pièce s'emboîte sur un axe carré de 8 mm…"></textarea>
+        <span class="field-note">À quoi sert la pièce, comment elle a cassé, ce qu'elle doit supporter — tout détail aide.</span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label mono" for="f-dimensions">Dimensions approximatives</label>
+          <input type="text" id="f-dimensions" name="dimensions" placeholder="Ex. : 60 × 40 × 15 mm">
+        </div>
+        <div class="field">
+          <label class="field-label mono" for="f-quantite">Quantité</label>
+          <input type="number" id="f-quantite" name="quantite" min="1" value="1">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label mono" for="f-materiau">Matériau souhaité</label>
+          <select id="f-materiau" name="materiau">
+            <option selected>Je ne sais pas — à conseiller</option>
+            <option>PETG (résistant, usage mécanique / extérieur)</option>
+            <option>PLA (déco, prototypes)</option>
+            <option>TPU (souple)</option>
+            <option>Autre — à préciser dans la description</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label mono" for="f-delai">Délai souhaité</label>
+          <select id="f-delai" name="delai">
+            <option selected>Pas pressé</option>
+            <option>Sous 2 semaines</option>
+            <option>Urgent — au plus vite</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label mono">Des photos de la pièce ?</span>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="photos" value="Oui, je les joins juste après" checked> Oui, j'en ai</label>
+          <label class="choice"><input type="radio" name="photos" value="Non, pas de photo"> Non</label>
+        </div>
+        <span class="field-note">Les photos ne partent pas avec le formulaire — joignez-les directement dans WhatsApp ou dans l'email une fois le message ouvert.</span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label mono" for="f-forfait">Forfait pressenti</label>
+          <select id="f-forfait" name="forfait">
+            <option value="0" selected>À définir ensemble</option>
+            <option value="1">Niveau 1 — Pièce simple (10 €)</option>
+            <option value="2">Niveau 2 — Pièce technique (20 €)</option>
+            <option value="3">Niveau 3 — Sur étude (dès 30 €)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label mono" for="f-prenom">Votre prénom <span class="field-note">(optionnel)</span></label>
+          <input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Pour savoir à qui je réponds">
+        </div>
+      </div>
+
+      <div class="devis-actions">
+        <button class="btn-block" id="send-whatsapp" type="button">Envoyer via WhatsApp</button>
+        <button class="btn-block btn-block-alt" id="send-email" type="button">Envoyer par email</button>
+      </div>
+      <span class="field-note">Rien ne part sans vous&nbsp;: le message s'ouvre pré-rempli, vous le relisez et l'envoyez vous-même.</span>
+
+    </form>
+
+    <noscript>
+      <p class="page-intro">Activez JavaScript pour composer et envoyer votre demande.</p>
+    </noscript>
+
+    <p class="copyright mono">© 2026 JdFixit — Tous droits réservés</p>
+
+  </main>
+
+  <script>
+    (function () {
+      var form = document.getElementById('devis-form');
+      // Même mécanisme anti-scraping que l'accueil : coordonnées encodées
+      // (base64 inversé), décodées uniquement au clic.
+      var dec = function (s) { return atob(s).split('').reverse().join(''); };
+
+      // Présélection du forfait via ?forfait=1|2|3 (liens de la page tarifs).
+      var m = /[?&]forfait=([123])\b/.exec(location.search);
+      if (m) document.getElementById('f-forfait').value = m[1];
+
+      function radio(name) {
+        var el = form.querySelector('input[name="' + name + '"]:checked');
+        return el ? el.value : '—';
+      }
+      function selText(id) {
+        var el = document.getElementById(id);
+        return el.options[el.selectedIndex].text;
+      }
+      function val(id, fallback) {
+        var v = document.getElementById(id).value.trim();
+        return v || fallback;
+      }
+
+      function compose() {
+        if (!form.reportValidity()) return null;
+        return [
+          'Demande de devis — JdFixit',
+          '',
+          'TYPE · ' + radio('type'),
+          'OBJET · ' + val('f-description', ''),
+          'DIMENSIONS · ' + val('f-dimensions', 'à mesurer ensemble'),
+          'QUANTITÉ · ' + val('f-quantite', '1'),
+          'MATÉRIAU · ' + selText('f-materiau'),
+          'DÉLAI · ' + selText('f-delai'),
+          'PHOTOS · ' + radio('photos'),
+          'FORFAIT PRESSENTI · ' + selText('f-forfait'),
+          'PRÉNOM · ' + val('f-prenom', '—')
+        ].join('\n');
+      }
+
+      document.getElementById('send-whatsapp').addEventListener('click', function () {
+        var msg = compose();
+        if (msg === null) return;
+        window.open('https://wa.me/' + dec(form.dataset.w) + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+      });
+
+      document.getElementById('send-email').addEventListener('click', function () {
+        var msg = compose();
+        if (msg === null) return;
+        location.href = 'mailto:' + dec(form.dataset.e) +
+          '?subject=' + encodeURIComponent('Demande de devis — JdFixit') +
+          '&body=' + encodeURIComponent(msg);
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="QR code Wero à venir">
+  <!-- Placeholder : remplacer ce fichier par le vrai QR code Wero
+       (même nom de fichier assets/wero-qr.svg, ou .png en ajustant
+       le src dans tarifs.html). -->
+  <rect width="240" height="240" fill="#fcfcfb"/>
+  <g stroke="#1b1c1e" stroke-opacity="0.08" stroke-width="1">
+    <path d="M26 0v240M52 0v240M78 0v240M104 0v240M130 0v240M156 0v240M182 0v240M208 0v240"/>
+    <path d="M0 26h240M0 52h240M0 78h240M0 104h240M0 130h240M0 156h240M0 182h240M0 208h240"/>
+  </g>
+  <rect x="14" y="14" width="212" height="212" fill="none" stroke="#e2562b" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <g fill="none" stroke="#1b1c1e" stroke-width="5" opacity="0.22">
+    <rect x="38" y="38" width="34" height="34"/>
+    <rect x="168" y="38" width="34" height="34"/>
+    <rect x="38" y="168" width="34" height="34"/>
+  </g>
+  <g fill="#1b1c1e" opacity="0.22">
+    <rect x="48" y="48" width="14" height="14"/>
+    <rect x="178" y="48" width="14" height="14"/>
+    <rect x="48" y="178" width="14" height="14"/>
+  </g>
+  <text x="120" y="112" text-anchor="middle" font-family="'Space Mono', monospace" font-size="19" font-weight="700" fill="#1b1c1e">QR WERO</text>
+  <text x="120" y="134" text-anchor="middle" font-family="'Space Mono', monospace" font-size="11" fill="#5b6066">bientôt disponible</text>
+  <text x="120" y="152" text-anchor="middle" font-family="'Space Mono', monospace" font-size="11" fill="#5b6066">demandez lors de l'échange</text>
+</svg>

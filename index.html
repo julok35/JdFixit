@@ -152,7 +152,20 @@
       });
 
       document.getElementById('open-whatsapp').addEventListener('click', function () {
-        window.open('https://wa.me/' + dec(grid.dataset.w), '_blank', 'noopener');
+        // Message pré-rempli reprenant le forfait sélectionné (ligne
+        // « FORFAIT PRESSENTI » tenue à jour par le script des forfaits).
+        // Endpoint api.whatsapp.com/send + navigation d'ancre : la
+        // redirection wa.me ouverte en popup perd parfois le paramètre
+        // `text` au moment d'ouvrir l'application.
+        var msg = 'Bonjour JdF, je vous contacte via le site JdFixit.\n' +
+          'FORFAIT PRESSENTI · ' + document.getElementById('sel-line').textContent;
+        var a = document.createElement('a');
+        a.href = 'https://api.whatsapp.com/send?phone=' + dec(grid.dataset.w) + '&text=' + encodeURIComponent(msg);
+        a.target = '_blank';
+        a.rel = 'noopener';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
       });
     })();
 

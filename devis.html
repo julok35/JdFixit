@@ -123,6 +123,21 @@
       // (base64 inversé), décodées uniquement au clic.
       var dec = function (s) { return atob(s).split('').reverse().join(''); };
 
+      // La redirection wa.me perd parfois le paramètre `text` au moment
+      // d'ouvrir l'application (desktop et certains mobiles) : on passe par
+      // l'endpoint direct api.whatsapp.com/send, ouvert via une vraie
+      // navigation d'ancre — window.open avec liste de features crée une
+      // popup dont le deep-link vers l'app peut arriver tronqué.
+      function openWhatsApp(number, text) {
+        var a = document.createElement('a');
+        a.href = 'https://api.whatsapp.com/send?phone=' + number + '&text=' + encodeURIComponent(text);
+        a.target = '_blank';
+        a.rel = 'noopener';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
       // Présélection du forfait via ?forfait=1|2|3 (liens de la page tarifs).
       var m = /[?&]forfait=([123])\b/.exec(location.search);
       if (m) document.getElementById('f-forfait').value = m[1];
@@ -160,7 +175,7 @@
       document.getElementById('send-whatsapp').addEventListener('click', function () {
         var msg = compose();
         if (msg === null) return;
-        window.open('https://wa.me/' + dec(form.dataset.w) + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+        openWhatsApp(dec(form.dataset.w), msg);
       });
 
       document.getElementById('send-email').addEventListener('click', function () {

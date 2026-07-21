@@ -42,21 +42,28 @@ const NAV_LINKS = [
   ['devis.html', 'Devis'],
 ];
 
-const nav = (current) =>
-  '<nav class="site-nav mono" aria-label="Navigation principale">' +
-  NAV_LINKS.map(([href, label]) =>
-    href === current
-      ? `<a href="${href}" class="is-active" aria-current="page">${label}</a>`
-      : `<a href="${href}">${label}</a>`
-  ).join('') +
-  '</nav>';
+const header = (current) =>
+  '<header class="site-header">' +
+    '<a class="logo logo-nav" href="index.html" aria-label="JdFixit — retour à l’accueil">' +
+      '<span class="logo-base">JdFixit</span>' +
+      '<span class="logo-top" aria-hidden="true">JdFixit</span>' +
+    '</a>' +
+    '<nav class="site-nav mono" aria-label="Navigation principale">' +
+    NAV_LINKS.map(([href, label]) =>
+      href === current
+        ? `<a href="${href}" class="is-active" aria-current="page">${label}</a>`
+        : `<a href="${href}">${label}</a>`
+    ).join('') +
+    '</nav>' +
+    `<a class="cta-devis hand${current === 'devis.html' ? ' is-current' : ''}" href="devis.html">Demander un devis</a>` +
+  '</header>';
 
 await mkdir('dist', { recursive: true });
 
 for (const page of PAGES) {
   let html = await readFile(page, 'utf8');
   html = html
-    .replaceAll('%%JDFIXIT_NAV%%', nav(page))
+    .replaceAll('%%JDFIXIT_NAV%%', header(page))
     .replaceAll('%%JDFIXIT_EMAIL_ENC%%', enc(values.JDFIXIT_EMAIL))
     .replaceAll('%%JDFIXIT_WA_ENC%%', enc(waNumber))
     .replaceAll('%%JDFIXIT_CITY%%', escapeHtml(values.JDFIXIT_CITY));

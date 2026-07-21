@@ -19,7 +19,10 @@
   --accent-light: #f4733f;
   --line: rgba(27, 28, 30, 0.35);
   --line-soft: rgba(27, 28, 30, 0.16);
-  --nav-h: 45px;
+  --nav-h: 76px;
+}
+@media (max-width: 880px) {
+  :root { --nav-h: 104px; }
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -594,19 +597,31 @@ a:hover { color: var(--accent-dark); }
 }
 
 /* ==========================================================================
-   Navigation commune (injectée par build.mjs)
+   Header commun sticky (injecté par build.mjs)
    ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60; /* au-dessus de .m-header (40) et des flèches (45) */
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 36px);
+  height: var(--nav-h);
+  padding: 0 clamp(16px, 2.6vw, 40px);
+  background: var(--paper); /* fond opaque : papier millimétré dessous */
+  border-bottom: 1.5px solid var(--line-soft);
+  flex-shrink: 0; /* body.home mobile est une colonne flex */
+}
+.logo-nav { font-size: 44px; text-decoration: none; }
+.logo-nav .logo-base { text-shadow: 1px 1px 0 #9a3319, 2px 2px 0 #6e2413, 3px 3px 0 #551c0d; }
+
 .site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 3vw, 30px);
-  height: var(--nav-h);
-  padding: 0 clamp(16px, 2.6vw, 40px);
-  background: var(--paper);
-  border-bottom: 1px solid var(--line-soft);
+  gap: clamp(14px, 2.2vw, 26px);
   overflow-x: auto;
   scrollbar-width: none;
-  flex-shrink: 0;
+  flex: 1;
 }
 .site-nav::-webkit-scrollbar { display: none; }
 .site-nav a {
@@ -623,6 +638,64 @@ a:hover { color: var(--accent-dark); }
 .site-nav a.is-active {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+
+/* CTA devis manuscrit — effet « coin de page de cahier qui se tourne » */
+.cta-devis {
+  position: relative;
+  margin-left: auto;
+  font-family: Caveat, cursive;
+  font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 28px);
+  line-height: 1;
+  color: #fff;
+  background: var(--accent);
+  padding: 10px 26px 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-1.5deg);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+/* Coin bas-droit : moitié « page du dessous » (papier), moitié « verso du pli » */
+.cta-devis::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  background: linear-gradient(315deg, var(--paper) 0 50%, var(--accent-dark) 50% 100%);
+  filter: drop-shadow(-2px -2px 3px rgba(27, 28, 30, 0.3));
+  transition: width 0.25s ease-out, height 0.25s ease-out;
+}
+.cta-devis:hover, .cta-devis:focus-visible {
+  color: #fff;
+  transform: rotate(-1.5deg) translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.cta-devis:hover::after, .cta-devis:focus-visible::after {
+  width: 28px;
+  height: 28px;
+}
+.cta-devis.is-current { pointer-events: none; opacity: 0.55; }
+@media (prefers-reduced-motion: reduce) {
+  .cta-devis, .cta-devis::after { transition: none; }
+}
+
+[id] { scroll-margin-top: calc(var(--nav-h) + 12px); }
+
+@media (max-width: 880px) {
+  .site-header {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--nav-h);
+    row-gap: 4px;
+    padding: 10px 16px 8px;
+  }
+  .logo-nav { font-size: 30px; }
+  .site-nav { order: 3; flex-basis: 100%; } /* rangée 2 : liens scrollables */
+  .cta-devis { font-size: 22px; padding: 6px 16px 9px; }
 }
 
 /* ==========================================================================

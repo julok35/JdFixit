@@ -79,10 +79,6 @@ a:hover { color: var(--accent-dark); }
   color: transparent;
 }
 .logo-hero { font-size: clamp(88px, 13vh, 150px); }
-.logo-header { font-size: 22px; }
-.logo-header .logo-base {
-  text-shadow: 1px 1px 0 #7e2b16, 2px 2px 0 #551c0d;
-}
 
 /* Identité --------------------------------------------------------------- */
 .badge {
@@ -281,28 +277,7 @@ a:hover { color: var(--accent-dark); }
   padding: 2px 7px;
 }
 
-/* Contact ------------------------------------------------------------------ */
-.contact-title {
-  font-weight: 600;
-  font-size: clamp(30px, 4vh, 36px);
-  line-height: 1;
-  color: #16181a;
-}
-.contact-text {
-  font-size: clamp(14px, 2vh, 16px);
-  line-height: 1.5;
-  color: var(--ink-3);
-}
-.sel-hint {
-  font-size: 10.5px;
-  color: var(--ink-5);
-}
-.sel-hint span { font-family: Archivo, sans-serif; font-size: 13px; color: var(--ink); }
-.contact-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+/* Boutons d'action ---------------------------------------------------------- */
 .btn-block {
   appearance: none;
   display: block;
@@ -334,25 +309,7 @@ a:hover { color: var(--accent-dark); }
   border-color: var(--accent);
   box-shadow: 4px 4px 0 var(--accent);
 }
-.contact-value {
-  display: block;
-  width: 100%;
-  text-align: center;
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  font-size: clamp(14px, 2.2vh, 17px);
-  color: var(--ink);
-  background: #fff;
-  border: 1.5px solid var(--ink);
-  padding: clamp(14px, 2.2vh, 18px);
-  box-shadow: 4px 4px 0 var(--accent);
-  text-decoration: none;
-  overflow-wrap: anywhere;
-}
-.contact-value:hover { color: var(--accent); }
-.zone-line { font-size: 10.5px; letter-spacing: 0.05em; color: var(--ink-5); }
 .zone-value { font-family: Archivo, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0; color: var(--ink); }
-.disclaimer { font-size: 12.5px; color: var(--ink-6); }
 .copyright { font-size: 9.5px; color: var(--ink-6); }
 
 /* Navigation mobile (masquée par défaut) ----------------------------------- */
@@ -710,7 +667,6 @@ a:hover { color: var(--accent-dark); }
   align-items: flex-start;
   gap: 10px;
 }
-.page-logo { text-decoration: none; }
 .page-title {
   font-weight: 600;
   font-size: clamp(34px, 5vh, 44px);

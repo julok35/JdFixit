@@ -11,77 +11,89 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="inner">
+<body class="inner page-tarifs">
 
   %%JDFIXIT_NAV%%
 
-  <main class="page">
+  %%JDFIXIT_PAGER_TOP%%
 
-    <header class="page-head">
-      <h1 class="page-title hand">— Tarifs &amp; paiement</h1>
-      <p class="page-sub mono">FORFAITS INDICATIFS · PAIEMENT WERO À LA REMISE</p>
-    </header>
+  <main class="track" id="track">
 
-    <p class="page-intro">Trois forfaits selon la complexité de la pièce. Chaque forfait couvre le filament, la visserie éventuelle, l'électricité et l'amortissement des machines. Le niveau se confirme ensemble après lecture de votre demande — sans surprise, le prix est annoncé avant de lancer quoi que ce soit.</p>
-
-    <!-- Forfaits : les cartes mènent au formulaire de devis, forfait présélectionné -->
-    <section class="plans-card" aria-label="Forfaits">
-      <div class="plans-head">
-        <span class="hand plans-title">— Forfaits indicatifs</span>
-        <span class="mono plans-note">Selon la complexité. Couvre filament, visserie, électricité, amortissement.</span>
-      </div>
-      <div class="plans-grid">
-        <a class="plan" href="devis.html?forfait=1">
-          <span class="plan-row"><span class="plan-num mono">NIVEAU 1</span><span class="plan-price">10<small> €</small></span></span>
-          <span class="plan-name hand">Pièce simple</span>
-          <span class="plan-desc">Modélisation directe, peu de contraintes. Une impression, c'est réglé. Exemple&nbsp;: cale, capuchon, patte de fixation.</span>
-          <span class="plan-pick">Décrire mon besoin →</span>
-        </a>
-        <a class="plan plan-dark" href="devis.html?forfait=2">
-          <span class="plan-flag mono">LE PLUS COURANT</span>
-          <span class="plan-row"><span class="plan-num mono">NIVEAU 2</span><span class="plan-price">20<small> €</small></span></span>
-          <span class="plan-name hand">Pièce technique</span>
-          <span class="plan-desc">Plus fine, plusieurs essais d'impression pour le bon réglage. Exemple&nbsp;: engrenage, clip, pièce d'emboîtement.</span>
-          <span class="plan-pick">Décrire mon besoin →</span>
-        </a>
-        <a class="plan" href="devis.html?forfait=3">
-          <span class="plan-row"><span class="plan-num mono">NIVEAU 3</span><span class="plan-price"><small class="plan-des">dès </small>30<small> €</small></span></span>
-          <span class="plan-name hand">Sur étude</span>
-          <span class="plan-desc">Contraintes fortes, tolérances serrées, plusieurs pièces. Devis à confirmer ensemble avant lancement.</span>
-          <span class="plan-pick">Décrire mon besoin →</span>
-        </a>
-      </div>
+    <!-- Panneau 1 · titre + intro -->
+    <section class="panel p-page-head">
+      <header class="page-head">
+        <h1 class="page-title hand">— Tarifs &amp; paiement</h1>
+        <p class="page-sub mono">FORFAITS INDICATIFS · PAIEMENT WERO À LA REMISE</p>
+      </header>
+      <p class="page-intro">Trois forfaits selon la complexité de la pièce. Chaque forfait couvre le filament, la visserie éventuelle, l'électricité et l'amortissement des machines. Le niveau se confirme ensemble après lecture de votre demande — sans surprise, le prix est annoncé avant de lancer quoi que ce soit.</p>
+      <p class="swipe-hint mono" aria-hidden="true"><span>GLISSEZ POUR VOIR LES FORFAITS</span><span class="swipe-arrow">→</span></p>
     </section>
 
-    <!-- Paiement Wero -->
-    <section class="wero-card" aria-label="Paiement">
-      <div class="plans-head">
-        <span class="hand plans-title">— Paiement par Wero</span>
-        <span class="mono plans-note">Instantané · Sans frais · De compte à compte</span>
-      </div>
-      <div class="wero-inner">
-        <div class="wero-body">
-          <h2>Simple et sans frais, à la remise de la pièce</h2>
-          <p>Wero est le paiement mobile des banques françaises et européennes (le successeur de Paylib)&nbsp;: un virement instantané de compte à compte, sans frais, directement depuis votre application bancaire. Pas d'acompte — on règle quand la pièce est entre vos mains.</p>
-          <ol class="wero-steps">
-            <li>Ouvrez votre application bancaire (ou l'application Wero).</li>
-            <li>Scannez le QR code ci-contre, ou utilisez le numéro communiqué lors de l'échange.</li>
-            <li>Confirmez le montant du forfait convenu — c'est réglé.</li>
-          </ol>
-          <p class="equip-note">Espèces acceptées également si vous préférez.</p>
+    <!-- Panneau 2 · forfaits : les cartes mènent au formulaire, forfait présélectionné -->
+    <section class="panel p-plans">
+      <div class="plans-card" aria-label="Forfaits">
+        <div class="plans-head">
+          <span class="hand plans-title">— Forfaits indicatifs</span>
+          <span class="mono plans-note">Selon la complexité. Couvre filament, visserie, électricité, amortissement.</span>
         </div>
-        <div class="wero-qr">
-          <img src="assets/wero-qr.svg" alt="QR code de paiement Wero" width="180" height="180">
-          <span class="mono">SCANNEZ AVEC VOTRE APPLI BANCAIRE</span>
+        <div class="plans-grid">
+          <a class="plan" href="devis.html?forfait=1">
+            <span class="plan-row"><span class="plan-num mono">NIVEAU 1</span><span class="plan-price">10<small> €</small></span></span>
+            <span class="plan-name hand">Pièce simple</span>
+            <span class="plan-desc">Modélisation directe, peu de contraintes. Une impression, c'est réglé. Exemple&nbsp;: cale, capuchon, patte de fixation.</span>
+            <span class="plan-pick">Décrire mon besoin →</span>
+          </a>
+          <a class="plan plan-dark" href="devis.html?forfait=2">
+            <span class="plan-flag mono">LE PLUS COURANT</span>
+            <span class="plan-row"><span class="plan-num mono">NIVEAU 2</span><span class="plan-price">20<small> €</small></span></span>
+            <span class="plan-name hand">Pièce technique</span>
+            <span class="plan-desc">Plus fine, plusieurs essais d'impression pour le bon réglage. Exemple&nbsp;: engrenage, clip, pièce d'emboîtement.</span>
+            <span class="plan-pick">Décrire mon besoin →</span>
+          </a>
+          <a class="plan" href="devis.html?forfait=3">
+            <span class="plan-row"><span class="plan-num mono">NIVEAU 3</span><span class="plan-price"><small class="plan-des">dès </small>30<small> €</small></span></span>
+            <span class="plan-name hand">Sur étude</span>
+            <span class="plan-desc">Contraintes fortes, tolérances serrées, plusieurs pièces. Devis à confirmer ensemble avant lancement.</span>
+            <span class="plan-pick">Décrire mon besoin →</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <a class="btn-block page-cta" href="devis.html">Décrire mon besoin →</a>
-
-    <p class="copyright mono">© 2026 JdFixit — Tous droits réservés</p>
+    <!-- Panneau 3 · paiement Wero -->
+    <section class="panel p-wero">
+      <div class="wero-card" aria-label="Paiement">
+        <div class="plans-head">
+          <span class="hand plans-title">— Paiement par Wero</span>
+          <span class="mono plans-note">Instantané · Sans frais · De compte à compte</span>
+        </div>
+        <div class="wero-inner">
+          <div class="wero-body">
+            <h2>Simple et sans frais, à la remise de la pièce</h2>
+            <p>Wero est le paiement mobile des banques françaises et européennes (le successeur de Paylib)&nbsp;: un virement instantané de compte à compte, sans frais, directement depuis votre application bancaire. Pas d'acompte — on règle quand la pièce est entre vos mains.</p>
+            <ol class="wero-steps">
+              <li>Ouvrez votre application bancaire (ou l'application Wero).</li>
+              <li>Scannez le QR code ci-contre, ou utilisez le numéro communiqué lors de l'échange.</li>
+              <li>Confirmez le montant du forfait convenu — c'est réglé.</li>
+            </ol>
+            <p class="equip-note">Espèces acceptées également si vous préférez.</p>
+          </div>
+          <div class="wero-qr">
+            <img src="assets/wero-qr.svg" alt="QR code de paiement Wero" width="180" height="180">
+            <span class="mono">SCANNEZ AVEC VOTRE APPLI BANCAIRE</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
+  <footer class="home-foot mono">
+    <span>ZONE · <span class="zone-value">%%JDFIXIT_CITY%%</span></span>
+    <span class="home-foot-disc">Pas de pièce de sécurité critique (freins, gaz, levage…)</span>
+    <span>© 2026 JdFixit</span>
+  </footer>
+
+  %%JDFIXIT_PAGER_BOTTOM%%
 </body>
 </html>

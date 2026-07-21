@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Croquis technique d'une imprimante 3D BambuLab X1C">
+  <defs>
+    <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0V26" fill="none" stroke="#1b1c1e" stroke-opacity=".06"/>
+    </pattern>
+    <pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line y2="6" stroke="#1b1c1e" stroke-opacity=".18"/>
+    </pattern>
+  </defs>
+  <rect width="420" height="280" fill="#fcfcfb"/>
+  <rect width="420" height="280" fill="url(#g)"/>
+  <g fill="none" stroke="#1b1c1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.6 210 140)">
+    <rect x="115" y="40" width="195" height="192"/>
+    <rect x="133" y="70" width="159" height="132" fill="url(#h)"/>
+    <line x1="133" y1="100" x2="292" y2="100"/>
+    <rect x="198" y="92" width="28" height="24" fill="#e2562b" stroke="#e2562b"/>
+    <path d="M212 118v26" stroke="#e2562b" stroke-dasharray="3 4"/>
+    <rect x="176" y="150" width="72" height="30" stroke-width="1.8"/>
+    <line x1="150" y1="202" x2="276" y2="202" stroke-width="1.8"/>
+    <circle cx="212" cy="52" r="4" stroke-width="1.6"/>
+    <path d="M115 250h195M115 244v12M310 244v12" stroke-width="1.4"/>
+  </g>
+  <text x="116" y="272" font-family="'Space Mono',monospace" font-size="11" fill="#5b6066">BAMBULAB X1C · 256 mm&#179;</text>
+</svg>

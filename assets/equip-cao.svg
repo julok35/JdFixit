@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Croquis technique d'un écran de CAO et d'un pied à coulisse">
+  <defs>
+    <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0V26" fill="none" stroke="#1b1c1e" stroke-opacity=".06"/>
+    </pattern>
+  </defs>
+  <rect width="420" height="280" fill="#fcfcfb"/>
+  <rect width="420" height="280" fill="url(#g)"/>
+  <g fill="none" stroke="#1b1c1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.6 210 140)">
+    <!-- écran -->
+    <rect x="96" y="42" width="228" height="150"/>
+    <path d="M186 192v18M234 192v18M160 210h100" stroke-width="1.8"/>
+    <!-- pièce filaire 3D (cube isométrique) -->
+    <path d="M172 82l38-20 38 20v44l-38 20-38-20z"/>
+    <path d="M172 82l38 20 38-20M210 102v44" stroke-width="1.6"/>
+    <path d="M210 102l-38-20M248 126l-38 20" stroke-width="1" stroke-dasharray="3 4"/>
+    <!-- cote accent sur la pièce -->
+    <path d="M256 62l14-8M256 126l14 8M263 58v76" stroke="#e2562b" stroke-width="1.6"/>
+    <!-- pied à coulisse posé devant -->
+    <path d="M108 238h204" stroke-width="1.8"/>
+    <rect x="108" y="228" width="14" height="20" stroke-width="1.8"/>
+    <rect x="150" y="228" width="12" height="20" fill="#e2562b" stroke="#e2562b"/>
+    <path d="M118 233h190" stroke-width="1.4" stroke-dasharray="2 4"/>
+  </g>
+  <text x="98" y="272" font-family="'Space Mono',monospace" font-size="11" fill="#5b6066">CAO &#183; TOL&#201;RANCES &#183; FINITIONS</text>
+</svg>

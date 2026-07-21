@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Croquis technique de bobines de filament">
+  <defs>
+    <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M26 0H0V26" fill="none" stroke="#1b1c1e" stroke-opacity=".06"/>
+    </pattern>
+    <pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line y2="6" stroke="#1b1c1e" stroke-opacity=".18"/>
+    </pattern>
+  </defs>
+  <rect width="420" height="280" fill="#fcfcfb"/>
+  <rect width="420" height="280" fill="url(#g)"/>
+  <g fill="none" stroke="#1b1c1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.6 210 140)">
+    <!-- bobine 1 (arrière gauche) -->
+    <circle cx="120" cy="120" r="58"/>
+    <circle cx="120" cy="120" r="52" fill="url(#h)"/>
+    <circle cx="120" cy="120" r="22" fill="#fcfcfb"/>
+    <circle cx="120" cy="120" r="8"/>
+    <!-- bobine 2 (arrière droite) -->
+    <circle cx="298" cy="112" r="64"/>
+    <circle cx="298" cy="112" r="57" fill="url(#h)"/>
+    <circle cx="298" cy="112" r="24" fill="#fcfcfb"/>
+    <circle cx="298" cy="112" r="9"/>
+    <!-- bobine 3 (avant centre) -->
+    <circle cx="208" cy="178" r="70" fill="#fcfcfb"/>
+    <circle cx="208" cy="178" r="70"/>
+    <circle cx="208" cy="178" r="62" fill="url(#h)"/>
+    <circle cx="208" cy="178" r="26" fill="#fcfcfb"/>
+    <circle cx="208" cy="178" r="10"/>
+    <!-- brin qui s'échappe -->
+    <path d="M270 155c40-18 62-42 78-88" stroke="#e2562b" stroke-dasharray="4 5"/>
+    <circle cx="352" cy="62" r="3.5" fill="#e2562b" stroke="#e2562b"/>
+  </g>
+  <text x="116" y="272" font-family="'Space Mono',monospace" font-size="11" fill="#5b6066">PETG · PLA · TPU</text>
+</svg>

@@ -11,21 +11,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="inner">
+<body class="inner page-materiel">
 
   %%JDFIXIT_NAV%%
 
-  <main class="page">
+  %%JDFIXIT_PAGER_TOP%%
 
-    <header class="page-head">
-      <h1 class="page-title hand">— Le matériel de l'atelier</h1>
-      <p class="page-sub mono">MACHINES · MATIÈRES · CAPACITÉS</p>
-    </header>
+  <main class="track" id="track">
 
-    <p class="page-intro">Un aperçu de ce qui tourne à l'atelier et de ce que chaque machine sait faire. Si votre besoin sort de ces capacités, on en parle quand même — il y a souvent une solution.</p>
+    <!-- Panneau 1 · titre + intro -->
+    <section class="panel p-page-head">
+      <header class="page-head">
+        <h1 class="page-title hand">— Le matériel de l'atelier</h1>
+        <p class="page-sub mono">MACHINES · MATIÈRES · CAPACITÉS</p>
+      </header>
+      <div class="page-lead">
+        <p class="page-intro">Un aperçu de ce qui tourne à l'atelier et de ce que chaque machine sait faire. Si votre besoin sort de ces capacités, on en parle quand même — il y a souvent une solution.</p>
+        <p class="equip-note">Pas de pièce de sécurité critique (freins, gaz, levage…).</p>
+      </div>
+      <p class="swipe-hint mono" aria-hidden="true"><span>GLISSEZ POUR VOIR LES MACHINES</span><span class="swipe-arrow">→</span></p>
+    </section>
 
-    <section class="equip-grid" aria-label="Équipements">
-
+    <section class="panel p-equip">
       <article class="equip-card">
         <header class="equip-head mono"><span>IMPRESSION 3D</span><span class="accent">◆</span></header>
         <figure class="equip-figure"><img src="assets/equip-imprimante.svg" alt="" loading="lazy"></figure>
@@ -41,7 +48,9 @@
           </ul>
         </div>
       </article>
+    </section>
 
+    <section class="panel p-equip">
       <article class="equip-card">
         <header class="equip-head mono"><span>FILAMENTS</span><span class="accent">◆</span></header>
         <figure class="equip-figure"><img src="assets/equip-filaments.svg" alt="" loading="lazy"></figure>
@@ -56,7 +65,9 @@
           </ul>
         </div>
       </article>
+    </section>
 
+    <section class="panel p-equip">
       <article class="equip-card">
         <header class="equip-head mono"><span>GRAVURE LASER</span><span class="accent">◆</span></header>
         <figure class="equip-figure"><img src="assets/equip-laser.svg" alt="" loading="lazy"></figure>
@@ -71,7 +82,9 @@
           </ul>
         </div>
       </article>
+    </section>
 
+    <section class="panel p-equip">
       <article class="equip-card">
         <header class="equip-head mono"><span>CAO &amp; FINITIONS</span><span class="accent">◆</span></header>
         <figure class="equip-figure"><img src="assets/equip-cao.svg" alt="" loading="lazy"></figure>
@@ -86,16 +99,16 @@
           </ul>
         </div>
       </article>
-
     </section>
-
-    <p class="equip-note">Pas de pièce de sécurité critique (freins, gaz, levage…).</p>
-
-    <a class="btn-block page-cta" href="devis.html">Décrire mon besoin →</a>
-
-    <p class="copyright mono">© 2026 JdFixit — Tous droits réservés</p>
 
   </main>
 
+  <footer class="home-foot mono">
+    <span>ZONE · <span class="zone-value">%%JDFIXIT_CITY%%</span></span>
+    <span class="home-foot-disc">Pas de pièce de sécurité critique (freins, gaz, levage…)</span>
+    <span>© 2026 JdFixit</span>
+  </footer>
+
+  %%JDFIXIT_PAGER_BOTTOM%%
 </body>
 </html>

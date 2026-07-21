@@ -11,46 +11,62 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="inner">
+<body class="inner page-galerie">
 
   %%JDFIXIT_NAV%%
 
-  <main class="page">
+  %%JDFIXIT_PAGER_TOP%%
 
-    <header class="page-head">
-      <h1 class="page-title hand">— Galerie de réalisations</h1>
-      <p class="page-sub mono">CE QUI SORT DE L'ATELIER · 3 PHOTOS PAR SUJET</p>
-    </header>
+  <main class="track" id="track">
 
-    <p class="page-intro">Quelques réalisations pour se faire une idée de ce qui est possible — réparations, créations sur mesure, gravures. Chaque sujet est présenté en trois photos&nbsp;: le point de départ, le travail, le résultat.</p>
+    <!-- Panneau 1 · titre + intro -->
+    <section class="panel p-page-head">
+      <header class="page-head">
+        <h1 class="page-title hand">— Galerie de réalisations</h1>
+        <p class="page-sub mono">CE QUI SORT DE L'ATELIER · 3 PHOTOS PAR SUJET</p>
+      </header>
+      <p class="page-intro">Quelques réalisations pour se faire une idée de ce qui est possible — réparations, créations sur mesure, gravures. Chaque sujet est présenté en trois photos&nbsp;: le point de départ, le travail, le résultat.</p>
+      <p class="swipe-hint mono" aria-hidden="true"><span>GLISSEZ POUR VOIR LES PHOTOS</span><span class="swipe-arrow">→</span></p>
+    </section>
 
     <!--
       Pour ajouter une réalisation :
       1. Déposer 3 photos dans assets/galerie/<nom-du-sujet>/ (ex. 1.webp, 2.webp, 3.webp)
-      2. Dupliquer un bloc <article class="gal-item"> ci-dessous et adapter
-         titre, tag, chemins d'images, textes alt et description.
+      2. Dupliquer les 3 panneaux photo + le panneau texte ci-dessous et
+         adapter légendes, chemins d'images, textes alt et description.
     -->
 
-    <article class="gal-item">
-      <header class="gal-head">
-        <h2 class="hand">De l'idée à la pièce</h2>
-        <span class="gal-tag mono">PETG · MÉTHODE ATELIER</span>
-      </header>
-      <div class="gal-photos">
-        <figure class="gal-figure"><img src="assets/etape-1-croquis.webp" alt="Croquis coté à main levée de la pièce à refaire" loading="lazy"></figure>
-        <figure class="gal-figure"><img src="assets/etape-2-cao.png" alt="Modélisation CAO et mise en plan de la pièce" loading="lazy"></figure>
-        <figure class="gal-figure"><img src="assets/etape-3-print.jpg" alt="Pièce finale imprimée en PETG" loading="lazy"></figure>
-      </div>
+    <!-- Sujet · De l'idée à la pièce -->
+    <section class="panel p-gal-photo">
+      <p class="gal-cap mono"><span>01 / 03</span><span class="sh-sep" aria-hidden="true">·</span><span>LE CROQUIS COTÉ</span></p>
+      <figure class="gal-figure"><img src="assets/etape-1-croquis.webp" alt="Croquis coté à main levée de la pièce à refaire" loading="lazy"></figure>
+    </section>
+
+    <section class="panel p-gal-photo">
+      <p class="gal-cap mono"><span>02 / 03</span><span class="sh-sep" aria-hidden="true">·</span><span>LA CAO ◆</span></p>
+      <figure class="gal-figure"><img src="assets/etape-2-cao.png" alt="Modélisation CAO et mise en plan de la pièce" loading="lazy"></figure>
+    </section>
+
+    <section class="panel p-gal-photo">
+      <p class="gal-cap mono"><span>03 / 03</span><span class="sh-sep" aria-hidden="true">·</span><span class="accent">LE PRINT PETG</span></p>
+      <figure class="gal-figure gal-figure-final"><img src="assets/etape-3-print.jpg" alt="Pièce finale imprimée en PETG" loading="lazy"></figure>
+    </section>
+
+    <!-- Panneau texte du sujet -->
+    <section class="panel p-gal-text">
+      <h2 class="gal-title hand">De l'idée à la pièce <span class="gal-tag mono">PETG · MÉTHODE ATELIER</span></h2>
       <p class="gal-text">Le déroulé type d'une réparation&nbsp;: relevé coté à main levée pour comprendre pourquoi la pièce a cédé, modélisation CAO avec tolérances et vérification RDM, puis impression PETG sur BambuLab X1C. Du prototype testé à la pièce finale — ajustée, résistante, et le fichier remis si vous le souhaitez.</p>
-    </article>
-
-    <p class="page-intro hand" style="font-size: 22px;">D'autres réalisations arrivent — la vitrine se remplit au rythme de l'atelier. <span class="accent">— JdF</span></p>
-
-    <a class="btn-block page-cta" href="devis.html">Décrire mon besoin →</a>
-
-    <p class="copyright mono">© 2026 JdFixit — Tous droits réservés</p>
+      <p class="gal-more hand">D'autres réalisations arrivent — la vitrine se remplit au rythme de l'atelier. <span class="accent">— JdF</span></p>
+    </section>
 
   </main>
 
+  <footer class="home-foot mono">
+    <span>ZONE · <span class="zone-value">%%JDFIXIT_CITY%%</span></span>
+    <span class="home-foot-disc">Pas de pièce de sécurité critique (freins, gaz, levage…)</span>
+    <span>© 2026 JdFixit</span>
+  </footer>
+
+  %%JDFIXIT_PAGER_BOTTOM%%
 </body>
 </html>

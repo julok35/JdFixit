@@ -5,8 +5,12 @@ plus, je la redessine et je l'imprime. » Relevé coté à main levée,
 modélisation CAO, impression PETG (BambuLab X1C), forfaits indicatifs.
 
 Le design reprend le prototype établi dans Claude Design (esthétique papier
-millimétré, typographies Archivo / Caveat / Space Mono) : grille plein écran
+millimétré, typographies Archivo / Caveat / Space Mono). Toutes les pages
+sont verrouillées plein écran (aucun scroll vertical) : grilles composées
 sur desktop, navigation par écrans à glisser horizontalement sur mobile.
+Le logo « migre » entre le hero de l'accueil et le header des pages
+intérieures via l'API View Transitions (dégradation gracieuse en
+navigation classique si le navigateur ne la supporte pas).
 
 Site statique (HTML/CSS) avec un mini-build (`build.mjs`) qui injecte les
 coordonnées de contact depuis les variables d'environnement au moment du

@@ -819,6 +819,22 @@ a:hover { color: var(--accent-dark); }
   letter-spacing: 0.06em;
   color: var(--ink-4);
 }
+.equip-figure {
+  position: relative;
+  aspect-ratio: 3 / 2; /* même ratio pour les futures vraies photos */
+  margin: 0;
+  overflow: hidden;
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line-soft);
+}
+.equip-figure img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* une vraie photo remplacera le SVG sans changement CSS */
+  display: block;
+}
 .equip-body {
   padding: 12px 14px 16px;
   display: flex;

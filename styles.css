@@ -78,7 +78,7 @@ a:hover { color: var(--accent-dark); }
   background-clip: text;
   color: transparent;
 }
-.logo-hero { font-size: clamp(44px, 6.4vh, 62px); }
+.logo-hero { font-size: clamp(88px, 13vh, 150px); }
 .logo-header { font-size: 22px; }
 .logo-header .logo-base {
   text-shadow: 1px 1px 0 #7e2b16, 2px 2px 0 #551c0d;
@@ -89,7 +89,7 @@ a:hover { color: var(--accent-dark); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.06em;
   color: var(--ink-5);
 }
@@ -102,12 +102,12 @@ a:hover { color: var(--accent-dark); }
 }
 .tagline {
   font-weight: 500;
-  font-size: clamp(16px, 2.4vh, 21px);
+  font-size: clamp(28px, 4.4vh, 44px);
   line-height: 1.35;
   color: var(--ink-2);
 }
 .note {
-  font-size: clamp(19px, 2.6vh, 23px);
+  font-size: clamp(28px, 4vh, 40px);
   line-height: 1.25;
   color: #3c4147;
 }
@@ -115,7 +115,7 @@ a:hover { color: var(--accent-dark); }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   color: var(--accent);
 }
@@ -145,7 +145,7 @@ a:hover { color: var(--accent-dark); }
   padding: 7px 12px;
   background: var(--paper-2);
   border-bottom: 1px solid var(--line-soft);
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   color: var(--ink-4);
 }
@@ -168,11 +168,11 @@ a:hover { color: var(--accent-dark); }
 .step-body { padding: 10px 14px 14px; }
 .step-body h3 {
   font-weight: 700;
-  font-size: clamp(15px, 2vh, 18px);
+  font-size: clamp(24px, 3.4vh, 34px);
   margin-bottom: 5px;
 }
 .step-body p {
-  font-size: clamp(12px, 1.6vh, 13.5px);
+  font-size: clamp(15px, 2.2vh, 19px);
   line-height: 1.45;
   color: var(--ink-3);
 }
@@ -359,6 +359,22 @@ a:hover { color: var(--accent-dark); }
 .m-header, .nav-arrow { display: none; }
 .is-hidden { display: none !important; }
 
+/* Pied de page accueil ------------------------------------------------------ */
+.home-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 18px;
+  padding: 9px clamp(16px, 2.6vw, 40px);
+  border-top: 1px solid var(--line-soft);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--ink-6);
+  background: var(--paper);
+  flex-shrink: 0; /* body.home mobile est une colonne flex */
+}
+@media (max-width: 880px) { .home-foot-disc { display: none; } }
+
 /* ==========================================================================
    Desktop — grille plein écran type maquette « JdFixit v2 »
    ========================================================================== */
@@ -366,10 +382,10 @@ a:hover { color: var(--accent-dark); }
   .swipe-hint { display: none; }
 
   .track {
-    min-height: calc(100vh - var(--nav-h));
+    min-height: calc(100vh - var(--nav-h) - 38px); /* 38px ≈ hauteur du footer */
     display: grid;
     grid-template-columns: 1fr auto 1fr auto 1fr;
-    grid-template-rows: auto minmax(min-content, 1fr) auto;
+    grid-template-rows: auto 1fr;
     gap: clamp(10px, 1.8vh, 22px) clamp(8px, 1.2vw, 16px);
     padding: clamp(12px, 2vh, 24px) clamp(16px, 2.6vw, 40px);
   }
@@ -391,23 +407,6 @@ a:hover { color: var(--accent-dark); }
   .arrow-2 { grid-row: 2; grid-column: 4; }
   .p-step:nth-of-type(4) { grid-column: 5; }
 
-  .p-plans {
-    grid-row: 3;
-    grid-column: 1 / 4;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .p-contact {
-    grid-row: 3;
-    grid-column: 4 / 6;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-  }
-  .p-contact .contact-title { font-size: clamp(24px, 3.4vh, 30px); }
-  .copyright { margin-top: 4px; }
 }
 
 /* ==========================================================================
@@ -434,7 +433,7 @@ a:hover { color: var(--accent-dark); }
   }
   .m-header-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
   }
   .m-counter { font-size: 11px; color: var(--ink-5); }
@@ -446,7 +445,7 @@ a:hover { color: var(--accent-dark); }
   }
   .m-progress-fill {
     height: 100%;
-    width: 16.667%;
+    width: 25%;
     background: var(--accent);
     border-radius: 99px;
     transition: width 0.35s ease;
@@ -478,8 +477,8 @@ a:hover { color: var(--accent-dark); }
   /* Panneau hero : les deux marges auto (badge / hint) centrent le contenu */
   .p-hero { justify-content: center; gap: 16px; padding-top: 8px; }
   .p-hero .badge { margin-top: auto; }
-  .logo-hero { font-size: clamp(52px, 15vw, 62px); }
-  .tagline { font-size: 21px; }
+  .logo-hero { font-size: clamp(64px, 20vw, 96px); }
+  .tagline { font-size: clamp(26px, 6.5vw, 34px); }
   .swipe-hint { margin-top: auto; }
 
   /* Panneaux étapes : contenu à nu sur le quadrillage, cadre image seul */
@@ -513,8 +512,7 @@ a:hover { color: var(--accent-dark); }
   .step-body h3 { font-size: 26px; margin-bottom: 8px; }
   .step-body p { font-size: 16px; line-height: 1.5; }
 
-  /* Panneau forfaits */
-  .p-plans { justify-content: center; gap: 11px; }
+  /* Forfaits (styles réutilisés par tarifs.html) */
   .plans-card { background: transparent; border: none; }
   .plans-head {
     background: transparent;
@@ -534,9 +532,6 @@ a:hover { color: var(--accent-dark); }
     border-left: 1.5px solid rgba(27, 28, 30, 0.28);
   }
   .plan-dark { border: none; margin-top: 4px; }
-
-  /* Panneau contact */
-  .p-contact { justify-content: center; gap: 16px; }
 
   /* Flèches flottantes */
   .nav-arrow {

@@ -22,7 +22,7 @@
       <p class="page-sub mono">2 MINUTES · RÉPONSE SOUS 48 H · SANS ENGAGEMENT</p>
     </header>
 
-    <p class="page-intro">Plus la demande est précise, plus la réponse est rapide — ces quelques champs évitent les allers-retours. À l'envoi, un message tout prêt s'ouvre dans WhatsApp ou dans votre messagerie&nbsp;: relisez, ajoutez vos photos, envoyez.</p>
+    <p class="page-intro">Décrivez votre besoin en quelques mots — ou cochez «&nbsp;on en discute ensemble&nbsp;» si vous ne savez pas trop. À l'envoi, un message tout prêt s'ouvre dans WhatsApp ou dans votre messagerie&nbsp;: relisez et envoyez. Sur mobile, vos photos peuvent partir avec le message.</p>
 
     <form class="devis-form" id="devis-form" data-e="%%JDFIXIT_EMAIL_ENC%%" data-w="%%JDFIXIT_WA_ENC%%">
 
@@ -33,6 +33,7 @@
           <label class="choice"><input type="radio" name="type" value="Créer une pièce sur mesure"> Créer une pièce sur mesure</label>
           <label class="choice"><input type="radio" name="type" value="Gravure laser"> Gravure laser</label>
           <label class="choice"><input type="radio" name="type" value="Autre"> Autre</label>
+          <label class="choice"><input type="radio" name="type" value="Je ne sais pas exactement, on en discute ensemble"> Je ne sais pas exactement, on en discute ensemble</label>
         </div>
       </div>
 
@@ -42,64 +43,74 @@
         <span class="field-note">À quoi sert la pièce, comment elle a cassé, ce qu'elle doit supporter — tout détail aide.</span>
       </div>
 
-      <div class="field-row">
-        <div class="field">
-          <label class="field-label mono" for="f-dimensions">Dimensions approximatives</label>
-          <input type="text" id="f-dimensions" name="dimensions" placeholder="Ex. : 60 × 40 × 15 mm">
-        </div>
-        <div class="field">
-          <label class="field-label mono" for="f-quantite">Quantité</label>
-          <input type="number" id="f-quantite" name="quantite" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label class="field-label mono" for="f-materiau">Matériau souhaité</label>
-          <select id="f-materiau" name="materiau">
-            <option selected>Je ne sais pas — à conseiller</option>
-            <option>PETG (résistant, usage mécanique / extérieur)</option>
-            <option>PLA (déco, prototypes)</option>
-            <option>TPU (souple)</option>
-            <option>Autre — à préciser dans la description</option>
-          </select>
-        </div>
-        <div class="field">
-          <label class="field-label mono" for="f-delai">Délai souhaité</label>
-          <select id="f-delai" name="delai">
-            <option selected>Pas pressé</option>
-            <option>Sous 2 semaines</option>
-            <option>Urgent — au plus vite</option>
-          </select>
-        </div>
+      <div class="field">
+        <span class="field-label mono">Photos de la pièce <span class="field-note">(recommandé)</span></span>
+        <input type="file" id="f-photos" accept="image/*" multiple hidden>
+        <button type="button" class="btn-file" id="photos-btn">+ Ajouter des photos</button>
+        <ul class="photo-previews" id="photo-previews"></ul>
+        <span class="field-note" id="photos-note-share" hidden>Vos photos partiront avec le message via le menu de partage.</span>
+        <span class="field-note" id="photos-note-fallback" hidden>Sur cet appareil les photos ne partent pas avec le formulaire — joignez-les directement dans la conversation WhatsApp ou dans l'email une fois le message ouvert.</span>
       </div>
 
       <div class="field">
-        <span class="field-label mono">Des photos de la pièce ?</span>
-        <div class="choice-row">
-          <label class="choice"><input type="radio" name="photos" value="Oui, je les joins juste après" checked> Oui, j'en ai</label>
-          <label class="choice"><input type="radio" name="photos" value="Non, pas de photo"> Non</label>
-        </div>
-        <span class="field-note">Les photos ne partent pas avec le formulaire — joignez-les directement dans WhatsApp ou dans l'email une fois le message ouvert.</span>
+        <label class="field-label mono" for="f-prenom">Votre prénom <span class="field-note">(optionnel)</span></label>
+        <input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Pour savoir à qui je réponds">
       </div>
 
-      <div class="field-row">
-        <div class="field">
-          <label class="field-label mono" for="f-forfait">Forfait pressenti</label>
-          <select id="f-forfait" name="forfait">
-            <option value="0" selected>À définir ensemble</option>
-            <option value="1">Niveau 1 — Pièce simple (10 €)</option>
-            <option value="2">Niveau 2 — Pièce technique (20 €)</option>
-            <option value="3">Niveau 3 — Sur étude (dès 30 €)</option>
-          </select>
-        </div>
-        <div class="field">
-          <label class="field-label mono" for="f-prenom">Votre prénom <span class="field-note">(optionnel)</span></label>
-          <input type="text" id="f-prenom" name="prenom" autocomplete="given-name" placeholder="Pour savoir à qui je réponds">
+      <button type="button" class="adv-toggle mono" id="adv-toggle" aria-expanded="false" aria-controls="adv-fields">
+        Paramètres avancés <span class="chev" aria-hidden="true"></span>
+      </button>
+
+      <div class="adv-wrap" id="adv-fields">
+        <div class="adv-inner">
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label mono" for="f-dimensions">Dimensions approximatives</label>
+              <input type="text" id="f-dimensions" name="dimensions" placeholder="Ex. : 60 × 40 × 15 mm">
+            </div>
+            <div class="field">
+              <label class="field-label mono" for="f-quantite">Quantité</label>
+              <input type="number" id="f-quantite" name="quantite" min="1" value="1">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label mono" for="f-materiau">Matériau souhaité</label>
+              <select id="f-materiau" name="materiau">
+                <option selected>Je ne sais pas — à conseiller</option>
+                <option>PETG (résistant, usage mécanique / extérieur)</option>
+                <option>PLA (déco, prototypes)</option>
+                <option>TPU (souple)</option>
+                <option>Autre — à préciser dans la description</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label mono" for="f-delai">Délai souhaité</label>
+              <select id="f-delai" name="delai">
+                <option selected>Pas pressé</option>
+                <option>Sous 2 semaines</option>
+                <option>Urgent — au plus vite</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label mono" for="f-forfait">Forfait pressenti</label>
+            <select id="f-forfait" name="forfait">
+              <option value="0" selected>À définir ensemble</option>
+              <option value="1">Niveau 1 — Pièce simple (10 €)</option>
+              <option value="2">Niveau 2 — Pièce technique (20 €)</option>
+              <option value="3">Niveau 3 — Sur étude (dès 30 €)</option>
+            </select>
+          </div>
+
         </div>
       </div>
 
       <div class="devis-actions">
+        <button class="btn-block" id="send-share" type="button" hidden>Envoyer avec les photos</button>
         <button class="btn-block" id="send-whatsapp" type="button">Envoyer via WhatsApp</button>
         <button class="btn-block btn-block-alt" id="send-email" type="button">Envoyer par email</button>
       </div>
@@ -137,10 +148,6 @@
         a.remove();
       }
 
-      // Présélection du forfait via ?forfait=1|2|3 (liens de la page tarifs).
-      var m = /[?&]forfait=([123])\b/.exec(location.search);
-      if (m) document.getElementById('f-forfait').value = m[1];
-
       function radio(name) {
         var el = form.querySelector('input[name="' + name + '"]:checked');
         return el ? el.value : '—';
@@ -154,31 +161,133 @@
         return v || fallback;
       }
 
-      function compose() {
-        if (!form.reportValidity()) return null;
-        return [
-          'Demande de devis — JdFixit',
-          '',
-          'TYPE · ' + radio('type'),
-          'OBJET · ' + val('f-description', ''),
-          'DIMENSIONS · ' + val('f-dimensions', 'à mesurer ensemble'),
-          'QUANTITÉ · ' + val('f-quantite', '1'),
-          'MATÉRIAU · ' + selText('f-materiau'),
-          'DÉLAI · ' + selText('f-delai'),
-          'PHOTOS · ' + radio('photos'),
-          'FORFAIT PRESSENTI · ' + selText('f-forfait'),
-          'PRÉNOM · ' + val('f-prenom', '—')
-        ].join('\n');
+      // Échappatoire « on en discute ensemble » : la description devient optionnelle.
+      var DISCUSS = 'Je ne sais pas exactement, on en discute ensemble';
+      var descEl = document.getElementById('f-description');
+      var descPh = descEl.placeholder;
+      var reqMark = form.querySelector('label[for="f-description"] .req');
+      [].slice.call(form.querySelectorAll('input[name="type"]')).forEach(function (r) {
+        r.addEventListener('change', function () {
+          var discuss = radio('type') === DISCUSS;
+          descEl.required = !discuss;
+          if (reqMark) reqMark.hidden = discuss;
+          descEl.placeholder = discuss
+            ? 'Optionnel — dites-en ce que vous pouvez, on précisera ensemble.'
+            : descPh;
+        });
+      });
+
+      // Paramètres avancés repliés par défaut.
+      var advBtn = document.getElementById('adv-toggle');
+      var advWrap = document.getElementById('adv-fields');
+      function setAdv(open) {
+        advWrap.classList.toggle('open', open);
+        advBtn.setAttribute('aria-expanded', String(open));
+      }
+      advBtn.addEventListener('click', function () {
+        setAdv(!advWrap.classList.contains('open'));
+      });
+
+      // Présélection du forfait via ?forfait=1|2|3 (liens de la page tarifs) :
+      // le forfait étant un paramètre avancé, on déplie la section.
+      var m = /[?&]forfait=([123])\b/.exec(location.search);
+      if (m) { document.getElementById('f-forfait').value = m[1]; setAdv(true); }
+
+      // Photos : sélection caméra/galerie native (pas d'attribut capture),
+      // aperçus supprimables, object URLs révoquées à la suppression.
+      var photosInput = document.getElementById('f-photos');
+      var previews = document.getElementById('photo-previews');
+      var photos = []; // [{ file, url }]
+      var MAX_PHOTOS = 6; // garde-fou taille de partage
+
+      document.getElementById('photos-btn').addEventListener('click', function () {
+        photosInput.click();
+      });
+      photosInput.addEventListener('change', function () {
+        [].slice.call(photosInput.files).forEach(function (f) {
+          if (photos.length < MAX_PHOTOS) photos.push({ file: f, url: URL.createObjectURL(f) });
+        });
+        photosInput.value = ''; // permet de re-sélectionner le même fichier
+        renderPhotos();
+      });
+      function renderPhotos() {
+        previews.innerHTML = '';
+        photos.forEach(function (item, i) {
+          var li = document.createElement('li');
+          var img = document.createElement('img');
+          img.src = item.url;
+          img.alt = '';
+          var del = document.createElement('button');
+          del.type = 'button';
+          del.className = 'photo-del';
+          del.textContent = '×';
+          del.setAttribute('aria-label', 'Retirer cette photo');
+          del.addEventListener('click', function () {
+            URL.revokeObjectURL(item.url);
+            photos.splice(i, 1);
+            renderPhotos();
+          });
+          li.appendChild(img);
+          li.appendChild(del);
+          previews.appendChild(li);
+        });
+        syncShareUi();
+      }
+      function rawFiles() {
+        return photos.map(function (x) { return x.file; });
+      }
+      function shareable() {
+        return photos.length > 0 && !!navigator.canShare && navigator.canShare({ files: rawFiles() });
+      }
+      function syncShareUi() {
+        var ok = shareable();
+        document.getElementById('send-share').hidden = !ok;
+        document.getElementById('photos-note-share').hidden = !ok;
+        document.getElementById('photos-note-fallback').hidden = !(photos.length && !ok);
       }
 
+      // Message : les champs avancés ne partent que s'ils sont renseignés
+      // ou différents de leur valeur par défaut.
+      function compose(viaShare) {
+        if (!form.reportValidity()) return null;
+        var discuss = radio('type') === DISCUSS;
+        var lines = ['Demande de devis — JdFixit', '', 'TYPE · ' + radio('type')];
+        var d = val('f-description', '');
+        if (d) lines.push('OBJET · ' + d);
+        else if (discuss) lines.push('OBJET · à définir ensemble de vive voix');
+        var dim = val('f-dimensions', '');
+        if (dim) lines.push('DIMENSIONS · ' + dim);
+        var q = val('f-quantite', '1');
+        if (q !== '1') lines.push('QUANTITÉ · ' + q);
+        if (document.getElementById('f-materiau').selectedIndex > 0) lines.push('MATÉRIAU · ' + selText('f-materiau'));
+        if (document.getElementById('f-delai').selectedIndex > 0) lines.push('DÉLAI · ' + selText('f-delai'));
+        if (document.getElementById('f-forfait').value !== '0') lines.push('FORFAIT PRESSENTI · ' + selText('f-forfait'));
+        if (photos.length) lines.push('PHOTOS · ' + photos.length + ' photo(s)' + (viaShare ? ' jointe(s)' : ' — je les joins dans la conversation'));
+        var p = val('f-prenom', '');
+        if (p) lines.push('PRÉNOM · ' + p);
+        return lines.join('\n');
+      }
+
+      // Envoi avec photos : Web Share niveau 2 (mobile). navigator.share doit
+      // être appelé de façon synchrone dans le handler du clic (user gesture).
+      document.getElementById('send-share').addEventListener('click', function () {
+        var msg = compose(true);
+        if (msg === null) return;
+        navigator.share({ files: rawFiles(), text: msg, title: 'Demande de devis — JdFixit' })
+          .catch(function (err) {
+            // AbortError = annulation par l'utilisateur, rien à faire.
+            if (err && err.name !== 'AbortError') syncShareUi();
+          });
+      });
+
       document.getElementById('send-whatsapp').addEventListener('click', function () {
-        var msg = compose();
+        var msg = compose(false);
         if (msg === null) return;
         openWhatsApp(dec(form.dataset.w), msg);
       });
 
       document.getElementById('send-email').addEventListener('click', function () {
-        var msg = compose();
+        var msg = compose(false);
         if (msg === null) return;
         location.href = 'mailto:' + dec(form.dataset.e) +
           '?subject=' + encodeURIComponent('Demande de devis — JdFixit') +

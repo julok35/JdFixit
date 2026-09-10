@@ -1,34 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Croquis technique de bobines de filament">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" role="img" aria-label="Schéma animé de trois bobines de filament qui tournent et alimentent la buse">
   <defs>
-    <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse">
-      <path d="M26 0H0V26" fill="none" stroke="#1b1c1e" stroke-opacity=".06"/>
-    </pattern>
     <pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <line y2="6" stroke="#1b1c1e" stroke-opacity=".18"/>
+      <line y2="6" stroke="#1b1c1e" stroke-opacity=".12"/>
     </pattern>
   </defs>
-  <rect width="420" height="280" fill="#fcfcfb"/>
-  <rect width="420" height="280" fill="url(#g)"/>
-  <g fill="none" stroke="#1b1c1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.6 210 140)">
-    <!-- bobine 1 (arrière gauche) -->
-    <circle cx="120" cy="120" r="58"/>
-    <circle cx="120" cy="120" r="52" fill="url(#h)"/>
-    <circle cx="120" cy="120" r="22" fill="#fcfcfb"/>
-    <circle cx="120" cy="120" r="8"/>
-    <!-- bobine 2 (arrière droite) -->
-    <circle cx="298" cy="112" r="64"/>
-    <circle cx="298" cy="112" r="57" fill="url(#h)"/>
-    <circle cx="298" cy="112" r="24" fill="#fcfcfb"/>
-    <circle cx="298" cy="112" r="9"/>
-    <!-- bobine 3 (avant centre) -->
-    <circle cx="208" cy="178" r="70" fill="#fcfcfb"/>
-    <circle cx="208" cy="178" r="70"/>
-    <circle cx="208" cy="178" r="62" fill="url(#h)"/>
-    <circle cx="208" cy="178" r="26" fill="#fcfcfb"/>
-    <circle cx="208" cy="178" r="10"/>
-    <!-- brin qui s'échappe -->
-    <path d="M270 155c40-18 62-42 78-88" stroke="#e2562b" stroke-dasharray="4 5"/>
-    <circle cx="352" cy="62" r="3.5" fill="#e2562b" stroke="#e2562b"/>
+  <style>
+    /* Les bobines tournent à des vitesses différentes ; le brin défile
+       vers la buse ; la matière en service est mise en avant à tour de rôle. */
+    .spool { transform-box: view-box; }
+    .s1 { transform-origin: 112px 92px;  animation: jdSpin 17s linear infinite; }
+    .s2 { transform-origin: 240px 110px; animation: jdSpin 11s linear infinite reverse; }
+    .s3 { transform-origin: 368px 92px;  animation: jdSpin 23s linear infinite; }
+    .strand { animation: jdFeed 1.1s linear infinite; }
+    .tip { transform-box: view-box; transform-origin: 398px 26px; animation: jdPulse 1.1s ease-in-out infinite; }
+    .lab { animation: jdPick 8.4s linear infinite; }
+    .lab2 { animation-delay: -5.6s; }
+    .lab3 { animation-delay: -2.8s; }
+    @keyframes jdSpin  { to { transform: rotate(360deg); } }
+    @keyframes jdFeed  { to { stroke-dashoffset: -9; } }
+    @keyframes jdPulse { 0%, 100% { transform: scale(.7); opacity: .5; } 50% { transform: scale(1.25); opacity: 1; } }
+    @keyframes jdPick  { 0% { fill: #e2562b; } 28% { fill: #e2562b; } 34%, 100% { fill: #5b6066; } }
+    @media (prefers-reduced-motion: reduce) {
+      .s1, .s2, .s3, .strand, .tip, .lab { animation: none; }
+    }
+  </style>
+  <g fill="none" stroke="#1b1c1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.6 240 100)">
+    <!-- bobine arrière gauche -->
+    <g class="spool s1">
+      <circle cx="112" cy="92" r="54" fill="#fcfcfb"/>
+      <circle cx="112" cy="92" r="47" fill="url(#h)" stroke-width="1.4"/>
+      <circle cx="112" cy="92" r="19" fill="#fcfcfb"/>
+      <path d="M112 73v-16M131 92h16M112 111v16M93 92H77" stroke-width="1.4"/>
+      <circle cx="112" cy="92" r="7"/>
+    </g>
+    <!-- bobine arrière droite -->
+    <g class="spool s3">
+      <circle cx="368" cy="92" r="50" fill="#fcfcfb"/>
+      <circle cx="368" cy="92" r="43" fill="url(#h)" stroke-width="1.4"/>
+      <circle cx="368" cy="92" r="18" fill="#fcfcfb"/>
+      <path d="M368 74v-14M386 92h14M368 110v14M350 92h-14" stroke-width="1.4"/>
+      <circle cx="368" cy="92" r="7"/>
+    </g>
+    <!-- bobine avant centre (en service) -->
+    <g class="spool s2">
+      <circle cx="240" cy="110" r="62" fill="#fcfcfb"/>
+      <circle cx="240" cy="110" r="54" fill="url(#h)" stroke-width="1.4"/>
+      <circle cx="240" cy="110" r="22" fill="#fcfcfb"/>
+      <path d="M240 88V70M262 110h18M240 132v18M218 110h-18" stroke-width="1.4"/>
+      <circle cx="240" cy="110" r="8"/>
+    </g>
+    <!-- brin de filament vers la buse : il passe au-dessus des bobines
+         arrière plutôt que de les traverser -->
+    <path class="strand" d="M284 62C320 42 352 28 396 26" stroke="#e2562b" stroke-width="2" stroke-dasharray="4 5"/>
+    <path d="M388 16h20" stroke="#e2562b" stroke-width="1.6"/>
+    <path d="M398 16v6" stroke="#e2562b" stroke-width="1.4"/>
+    <circle class="tip" cx="398" cy="26" r="3.4" fill="#e2562b" stroke="none"/>
   </g>
-  <text x="116" y="272" font-family="'Space Mono',monospace" font-size="11" fill="#5b6066">PETG · PLA · TPU</text>
+  <g font-family="'Space Mono',ui-monospace,monospace" font-size="11" text-anchor="middle">
+    <text class="lab" x="112" y="176" fill="#5b6066">PETG</text>
+    <text class="lab lab2" x="240" y="192" fill="#5b6066">PLA</text>
+    <text class="lab lab3" x="368" y="176" fill="#5b6066">TPU</text>
+  </g>
+  <text x="22" y="190" font-family="'Space Mono',ui-monospace,monospace" font-size="11" fill="#5b6066">MATIÈRES</text>
 </svg>

@@ -861,6 +861,22 @@ form.track { border: none; }
   object-fit: cover; /* une vraie photo remplacera le SVG sans changement CSS */
   display: block;
 }
+
+/* Vignette « schéma animé » : le SVG n'a ni fond ni trame, c'est la
+   vignette qui porte le papier millimétré (même trame que le body). Le
+   dessin est affiché en entier (contain) quelle que soit la hauteur de
+   la vignette : un schéma tronqué ne se lit pas. L'animation vit dans le
+   SVG lui-même — aucun script, et elle se coupe seule si le visiteur a
+   demandé moins de mouvement. */
+.equip-figure.figure-schema {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(rgba(27, 28, 30, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 28, 30, 0.055) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: -1px -1px;
+}
+.figure-schema img { object-fit: contain; }
 .equip-body {
   padding: 12px 14px 16px;
   display: flex;

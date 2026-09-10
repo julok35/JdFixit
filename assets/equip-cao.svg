@@ -1,26 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Croquis technique d'un écran de CAO et d'un pied à coulisse">
-  <defs>
-    <pattern id="g" width="26" height="26" patternUnits="userSpaceOnUse">
-      <path d="M26 0H0V26" fill="none" stroke="#1b1c1e" stroke-opacity=".06"/>
-    </pattern>
-  </defs>
-  <rect width="420" height="280" fill="#fcfcfb"/>
-  <rect width="420" height="280" fill="url(#g)"/>
-  <g fill="none" stroke="#1b1c1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.6 210 140)">
-    <!-- écran -->
-    <rect x="96" y="42" width="228" height="150"/>
-    <path d="M186 192v18M234 192v18M160 210h100" stroke-width="1.8"/>
-    <!-- pièce filaire 3D (cube isométrique) -->
-    <path d="M172 82l38-20 38 20v44l-38 20-38-20z"/>
-    <path d="M172 82l38 20 38-20M210 102v44" stroke-width="1.6"/>
-    <path d="M210 102l-38-20M248 126l-38 20" stroke-width="1" stroke-dasharray="3 4"/>
-    <!-- cote accent sur la pièce -->
-    <path d="M256 62l14-8M256 126l14 8M263 58v76" stroke="#e2562b" stroke-width="1.6"/>
-    <!-- pied à coulisse posé devant -->
-    <path d="M108 238h204" stroke-width="1.8"/>
-    <rect x="108" y="228" width="14" height="20" stroke-width="1.8"/>
-    <rect x="150" y="228" width="12" height="20" fill="#e2562b" stroke="#e2562b"/>
-    <path d="M118 233h190" stroke-width="1.4" stroke-dasharray="2 4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" role="img" aria-label="Schéma animé d'un écran de CAO : la pièce filaire se trace, les cotes et la tolérance apparaissent">
+  <style>
+    /* Cycle de 9 s : les arêtes se tracent, la cote et la tolérance
+       s'affichent, le curseur valide, puis on reprend le tracé. */
+    .edge { stroke-dasharray: 460; stroke-dashoffset: 0; animation: jdDraw 9s ease-in-out infinite; }
+    .e2 { animation-delay: -8.65s; }
+    .e3 { animation-delay: -8.3s; }
+    .model { animation: jdFade 9s linear infinite; }
+    .pop { animation: jdPop 9s ease-out infinite; }
+    .pop2 { animation-delay: -8.5s; }
+    .cursor { animation: jdMove 9s cubic-bezier(.5,0,.2,1) infinite; }
+    .caret { animation: jdBlink 1s steps(1, end) infinite; }
+    @keyframes jdDraw  { 0% { stroke-dashoffset: 460; } 26%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdFade  { 0%, 88% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes jdPop   { 0%, 32% { opacity: 0; } 40%, 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
+    @keyframes jdMove  { 0%, 20% { transform: translate(0, 0); } 42%, 56% { transform: translate(62px, -34px); } 78%, 100% { transform: translate(34px, 12px); } }
+    @keyframes jdBlink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .edge, .model, .pop, .cursor, .caret { animation: none; opacity: 1; }
+    }
+  </style>
+  <g fill="none" stroke="#1b1c1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.6 240 100)">
+    <!-- écran + pied -->
+    <rect x="118" y="18" width="244" height="140"/>
+    <path d="M214 158v12M266 158v12M186 170h108" stroke-width="1.8"/>
+    <path d="M118 34h244" stroke-width="1.2"/>
+    <!-- pièce filaire en cours de modélisation -->
+    <g class="model">
+      <path class="edge" d="M196 74l44-24 44 24v48l-44 24-44-24z"/>
+      <path class="edge e2" d="M196 74l44 24 44-24" stroke-width="1.6"/>
+      <path class="edge e3" d="M240 98v48" stroke-width="1.6"/>
+      <!-- arêtes cachées : elles apparaissent une fois le volume tracé -->
+      <path class="pop" d="M240 98V50M240 98l-44 24M240 98l44 24" stroke-width="1" stroke-dasharray="3 4"/>
+    </g>
+    <!-- cote et tolérance -->
+    <g class="pop" stroke="#e2562b" stroke-width="1.5">
+      <path d="M294 56l14-8M294 130l14 8M301 52v90"/>
+    </g>
+    <!-- curseur de sélection -->
+    <g class="cursor" stroke-width="1.5">
+      <path d="M160 118v14M153 125h14" stroke="#e2562b"/>
+      <circle cx="160" cy="125" r="4.5" stroke="#e2562b" stroke-width="1.2"/>
+    </g>
   </g>
-  <text x="98" y="272" font-family="'Space Mono',monospace" font-size="11" fill="#5b6066">CAO &#183; TOL&#201;RANCES &#183; FINITIONS</text>
+  <g font-family="'Space Mono',ui-monospace,monospace" font-size="11">
+    <text x="128" y="30" fill="#5b6066">PIECE_01.STEP</text>
+    <text class="caret" x="216" y="30" fill="#e2562b">_</text>
+    <text class="pop pop2" x="312" y="98" font-size="10" fill="#e2562b">±0,1</text>
+    <text x="22" y="176" fill="#5b6066">MODÉLISATION</text>
+    <text x="22" y="190" fill="#5b6066">TOLÉRANCES</text>
+  </g>
 </svg>

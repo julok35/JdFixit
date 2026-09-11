@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 420" role="img" aria-label="Schéma animé de modélisation CAO : le profil se trace, la pièce prend son épaisseur, les tolérances apparaissent">
+  <defs>
+    <pattern id="m" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line y2="7" stroke="#1b1c1e" stroke-opacity=".16"/>
+    </pattern>
+  </defs>
+  <style>
+    /* Cycle de 10 s : le profil se trace, la pièce est extrudée arête
+       par arête, la matière et les tolérances arrivent, puis on reprend. */
+    .ink    { animation: jdSheet 10s linear infinite; }
+    .face   { stroke-dasharray: 780; stroke-dashoffset: 0; animation: jdTrace 10s ease-in-out infinite; }
+    .bore   { stroke-dasharray: 90; stroke-dashoffset: 0; animation: jdBore 10s ease-out infinite; }
+    .depth  { stroke-dasharray: 70; stroke-dashoffset: 0; animation: jdPush 10s ease-out infinite; }
+    .back   { stroke-dasharray: 560; stroke-dashoffset: 0; animation: jdBack 10s ease-in-out infinite; }
+    .hid    { animation: jdPop1 10s ease-out infinite; }
+    .matter { animation: jdPop2 10s ease-out infinite; }
+    .tol    { animation: jdPop3 10s ease-out infinite; }
+    @keyframes jdTrace { 0% { stroke-dashoffset: 780; } 18%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdBore  { 0%, 16% { stroke-dashoffset: 90; } 23%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdPush  { 0%, 22% { stroke-dashoffset: 70; } 32%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdBack  { 0%, 28% { stroke-dashoffset: 560; } 42%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdPop1  { 0%, 44% { opacity: 0; } 50%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes jdPop2  { 0%, 50% { opacity: 0; } 58%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes jdPop3  { 0%, 60% { opacity: 0; } 66%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes jdSheet { 0%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ink, .face, .bore, .depth, .back, .hid, .matter, .tol { animation: none; }
+    }
+  </style>
+  <g class="ink" fill="none" stroke="#1b1c1e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.5 220 210)">
+    <!-- matière sur les faces vues de dessus -->
+    <g class="matter" stroke="none">
+      <path d="M120 120h66l46-32h-66z" fill="url(#m)"/>
+      <path d="M186 246h114l46-32H232z" fill="url(#m)"/>
+    </g>
+    <!-- profil de face -->
+    <path class="face" d="M120 120h66v126h114v50H120Z"/>
+    <circle class="bore" cx="153" cy="162" r="14"/>
+    <!-- arêtes d'épaisseur -->
+    <g class="depth" stroke-width="2">
+      <path d="M120 120l46-32"/>
+      <path d="M186 120l46-32"/>
+      <path d="M186 246l46-32"/>
+      <path d="M300 246l46-32"/>
+      <path d="M300 296l46-32"/>
+    </g>
+    <!-- silhouette arrière -->
+    <path class="back" d="M166 88h66v126h114v50"/>
+    <!-- arêtes cachées -->
+    <g class="hid" stroke-width="1.2" stroke-dasharray="4 5">
+      <path d="M120 296l46-32M166 264h180"/>
+    </g>
+    <!-- cote et tolérance -->
+    <g class="tol" stroke="#e2562b" stroke-width="1.5">
+      <path d="M362 214h22M378 264h22M390 214v50"/>
+      <path d="M167 176l-38 44h-42"/>
+      <circle cx="153" cy="162" r="3" fill="#e2562b"/>
+    </g>
+  </g>
+  <g class="ink" font-family="'Space Mono',ui-monospace,monospace" font-size="15">
+    <text class="tol" x="398" y="244" fill="#e2562b">6</text>
+    <text class="tol" x="82" y="226" fill="#e2562b" text-anchor="end">&#216;10 H7</text>
+    <text class="matter" x="250" y="112" fill="#5b6066" font-size="13">PETG</text>
+  </g>
+  <g font-family="'Space Mono',ui-monospace,monospace" font-size="13" fill="#5b6066">
+    <text x="26" y="388">MOD&#201;LISATION CAO</text>
+    <text x="26" y="406">TOL&#201;RANCE &#177;0,1</text>
+  </g>
+</svg>

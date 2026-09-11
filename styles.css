@@ -109,6 +109,45 @@ a:hover { color: var(--accent-dark); }
   @view-transition { navigation: none; }
 }
 
+/* Logo du hero : le wordmark est un SVG (les vraies lettres Archivo 900),
+   ce qui permet de le tracer lettre par lettre avant que l'encre ne
+   prenne — croquis d'abord, objet fini ensuite, comme le reste du site.
+   Le tracé ne joue qu'une fois, au chargement, jamais en boucle. Le logo
+   du header des pages intérieures reste du texte : la migration entre
+   les deux passe toujours par view-transition-name. */
+.jd-logo-svg {
+  display: block;
+  height: 0.815em; /* hauteur du viewBox : l'encre fait 0,737 em */
+  width: auto;
+}
+.jd-logo-ink { animation: jdInk 0.55s ease-out 1.3s both; }
+.jd-logo-trace { animation: jdLift 0.45s ease-in 1.55s both; }
+.jd-tr { stroke-dasharray: var(--len); animation: jdWrite 0.55s ease-in-out both; }
+.jd-tr1 { --len: 2472; animation-delay: 0.05s; }
+.jd-tr2 { --len: 3300; animation-delay: 0.23s; }
+.jd-tr3 { --len: 3064; animation-delay: 0.41s; }
+.jd-tr4 { --len: 2122; animation-delay: 0.59s; }
+.jd-tr5 { --len: 2937; animation-delay: 0.72s; }
+.jd-tr6 { --len: 2122; animation-delay: 0.85s; }
+.jd-tr7 { --len: 2261; animation-delay: 0.98s; }
+@keyframes jdWrite { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+@keyframes jdInk { from { opacity: 0; } to { opacity: 1; } }
+@keyframes jdLift { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .jd-logo-ink, .jd-tr { animation: none; }
+  .jd-logo-trace { display: none; }
+}
+
+/* Texte réservé aux lecteurs d'écran (le nom derrière le logo dessiné). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* Identité --------------------------------------------------------------- */
 .badge {
   display: inline-flex;
@@ -867,8 +906,9 @@ form.track { border: none; }
    dessin est affiché en entier (contain) quelle que soit la hauteur de
    la vignette : un schéma tronqué ne se lit pas. L'animation vit dans le
    SVG lui-même — aucun script, et elle se coupe seule si le visiteur a
-   demandé moins de mouvement. */
-.equip-figure.figure-schema {
+   demandé moins de mouvement. Sert aux cartes Matériel comme aux étapes
+   de l'accueil — placée après elles pour l'emporter sur leur fond. */
+.figure-schema {
   background-color: var(--paper);
   background-image:
     linear-gradient(rgba(27, 28, 30, 0.055) 1px, transparent 1px),

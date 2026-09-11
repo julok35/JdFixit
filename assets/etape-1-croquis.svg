@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 420" role="img" aria-label="Schéma animé d'un relevé coté : la pièce se trace à main levée, puis les cotes apparaissent une à une">
+  <style>
+    /* Cycle de 10 s : on trace la pièce, on perce, puis on cote —
+       largeur, hauteur, diamètre — avant de reprendre une feuille neuve. */
+    .ink    { animation: jdSheet 10s linear infinite; }
+    .outline{ stroke-dasharray: 820; stroke-dashoffset: 0; animation: jdTrace 10s ease-in-out infinite; }
+    .hole   { stroke-dasharray: 108; stroke-dashoffset: 0; }
+    .hole1  { animation: jdBore 10s ease-out infinite; }
+    .hole2  { animation: jdBore2 10s ease-out infinite; }
+    .dim1   { animation: jdPop1 10s ease-out infinite; }
+    .dim2   { animation: jdPop2 10s ease-out infinite; }
+    .dim3   { animation: jdPop3 10s ease-out infinite; }
+    .probe  { animation: jdProbe 10s cubic-bezier(.5,0,.2,1) infinite; }
+    @keyframes jdTrace { 0% { stroke-dashoffset: 820; } 20%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdBore  { 0%, 17% { stroke-dashoffset: 108; } 24%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdBore2 { 0%, 21% { stroke-dashoffset: 108; } 28%, 100% { stroke-dashoffset: 0; } }
+    @keyframes jdPop1  { 0%, 32% { opacity: 0; } 38%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes jdPop2  { 0%, 42% { opacity: 0; } 48%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes jdPop3  { 0%, 52% { opacity: 0; } 58%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    @keyframes jdSheet { 0%, 90% { opacity: 1; } 97%, 100% { opacity: 0; } }
+    /* la touche vient se poser sur chaque point relevé, sans jamais
+       sortir de la feuille */
+    @keyframes jdProbe { 0%, 30% { transform: translate(0, 0); }
+                         40%, 48% { transform: translate(36px, 63px); }
+                         58%, 66% { transform: translate(156px, 187px); }
+                         76%, 100% { transform: translate(0, 214px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .ink, .outline, .hole1, .hole2, .dim1, .dim2, .dim3, .probe { animation: none; }
+    }
+  </style>
+  <g class="ink" fill="none" stroke="#1b1c1e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-.5 220 210)">
+    <!-- la pièce, tracée d'un trait : équerre percée -->
+    <path class="outline" d="M140 91 211 90 212 227 331 228 332 282 141 281Z"/>
+    <circle class="hole hole1" cx="176" cy="131" r="17"/>
+    <circle class="hole hole2" cx="296" cy="255" r="17"/>
+    <!-- cote de largeur -->
+    <g class="dim1" stroke-width="1.3">
+      <path d="M140 296v34M332 296v34M146 322h180"/>
+      <path d="M146 322l9-4v8zM326 322l-9-4v8z" fill="#1b1c1e"/>
+    </g>
+    <!-- cote de hauteur -->
+    <g class="dim2" stroke-width="1.3">
+      <path d="M126 90h-32M126 282h-32M104 96v180"/>
+      <path d="M104 96l-4 9h8zM104 276l-4-9h8z" fill="#1b1c1e"/>
+    </g>
+    <!-- cote de perçage -->
+    <g class="dim3" stroke="#e2562b" stroke-width="1.6">
+      <path d="M188 119l56-42h72"/>
+      <circle cx="176" cy="131" r="3" fill="#e2562b"/>
+    </g>
+    <!-- pointe de touche du pied à coulisse -->
+    <g class="probe" stroke="#e2562b" stroke-width="1.6">
+      <path d="M140 76v-16M132 68h16"/>
+      <circle cx="140" cy="68" r="5.5" stroke-width="1.3"/>
+    </g>
+  </g>
+  <g class="ink" font-family="'Space Mono',ui-monospace,monospace" font-size="15">
+    <text class="dim1" x="236" y="316" fill="#41474f" text-anchor="middle">108</text>
+    <text class="dim2" x="90" y="192" fill="#41474f" text-anchor="end">96</text>
+    <text class="dim3" x="322" y="82" fill="#e2562b">&#216;10</text>
+  </g>
+  <g font-family="'Space Mono',ui-monospace,monospace" font-size="13" fill="#5b6066">
+    <text x="26" y="388">RELEV&#201; &#192; MAIN LEV&#201;E</text>
+    <text x="26" y="406">COTES EN MM</text>
+  </g>
+</svg>
